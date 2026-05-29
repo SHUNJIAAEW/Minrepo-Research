@@ -1,0 +1,250 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - heading "🎰 P店データリサーチ" [level=1] [ref=e3]
+    - generic [ref=e4]: v1.0 / みんレポ連携
+  - generic [ref=e5]:
+    - complementary [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e8]: 北海道・東北
+        - button "北海道" [ref=e9] [cursor=pointer]
+        - button "青森県" [ref=e10] [cursor=pointer]
+        - button "岩手県" [ref=e11] [cursor=pointer]
+        - button "宮城県" [ref=e12] [cursor=pointer]
+        - button "秋田県" [ref=e13] [cursor=pointer]
+        - button "山形県" [ref=e14] [cursor=pointer]
+        - button "福島県" [ref=e15] [cursor=pointer]
+      - generic [ref=e16]:
+        - generic [ref=e17]: 関東
+        - button "茨城県" [ref=e18] [cursor=pointer]
+        - button "栃木県" [ref=e19] [cursor=pointer]
+        - button "群馬県" [ref=e20] [cursor=pointer]
+        - button "埼玉県" [ref=e21] [cursor=pointer]
+        - button "千葉県" [ref=e22] [cursor=pointer]
+        - button "東京都" [ref=e23] [cursor=pointer]
+        - button "神奈川県" [ref=e24] [cursor=pointer]
+      - generic [ref=e25]:
+        - generic [ref=e26]: 中部
+        - button "新潟県" [ref=e27] [cursor=pointer]
+        - button "富山県" [ref=e28] [cursor=pointer]
+        - button "石川県" [ref=e29] [cursor=pointer]
+        - button "福井県" [ref=e30] [cursor=pointer]
+        - button "山梨県" [ref=e31] [cursor=pointer]
+        - button "長野県" [ref=e32] [cursor=pointer]
+        - button "岐阜県" [ref=e33] [cursor=pointer]
+        - button "静岡県" [ref=e34] [cursor=pointer]
+        - button "愛知県" [active] [ref=e35] [cursor=pointer]
+      - generic [ref=e36]:
+        - generic [ref=e37]: 近畿
+        - button "三重県" [ref=e38] [cursor=pointer]
+        - button "滋賀県" [ref=e39] [cursor=pointer]
+        - button "京都府" [ref=e40] [cursor=pointer]
+        - button "大阪府" [ref=e41] [cursor=pointer]
+        - button "兵庫県" [ref=e42] [cursor=pointer]
+        - button "奈良県" [ref=e43] [cursor=pointer]
+        - button "和歌山県" [ref=e44] [cursor=pointer]
+      - generic [ref=e45]:
+        - generic [ref=e46]: 中国・四国
+        - button "鳥取県" [ref=e47] [cursor=pointer]
+        - button "島根県" [ref=e48] [cursor=pointer]
+        - button "岡山県" [ref=e49] [cursor=pointer]
+        - button "広島県" [ref=e50] [cursor=pointer]
+        - button "山口県" [ref=e51] [cursor=pointer]
+        - button "徳島県" [ref=e52] [cursor=pointer]
+        - button "香川県" [ref=e53] [cursor=pointer]
+        - button "愛媛県" [ref=e54] [cursor=pointer]
+        - button "高知県" [ref=e55] [cursor=pointer]
+      - generic [ref=e56]:
+        - generic [ref=e57]: 九州・沖縄
+        - button "福岡県" [ref=e58] [cursor=pointer]
+        - button "佐賀県" [ref=e59] [cursor=pointer]
+        - button "長崎県" [ref=e60] [cursor=pointer]
+        - button "熊本県" [ref=e61] [cursor=pointer]
+        - button "大分県" [ref=e62] [cursor=pointer]
+        - button "宮崎県" [ref=e63] [cursor=pointer]
+        - button "鹿児島県" [ref=e64] [cursor=pointer]
+        - button "沖縄県" [ref=e65] [cursor=pointer]
+    - main [ref=e66]:
+      - generic [ref=e67]:
+        - heading "愛知県 の店舗" [level=2] [ref=e70]
+        - generic [ref=e69]: 店舗カードをクリックすると、その日のデータを取得して分析します。
+      - generic [ref=e72]:
+        - generic [ref=e73] [cursor=pointer]:
+          - generic [ref=e74]: プレイランド第一平和
+          - generic [ref=e75]: 5/28(木) プレイランド第一平和
+          - generic [ref=e76]:
+            - generic [ref=e77]: 総差枚 +12,200
+            - generic [ref=e78]: 平均 +69
+        - generic [ref=e79] [cursor=pointer]:
+          - generic [ref=e80]: メガガイア小牧スロット館
+          - generic [ref=e81]: 5/28(木) メガガイア小牧スロット館
+          - generic [ref=e82]:
+            - generic [ref=e83]: 総差枚 +11,830
+            - generic [ref=e84]: 平均 +32
+        - generic [ref=e85] [cursor=pointer]:
+          - generic [ref=e86]: メガコンコルド1177岡崎インター店
+          - generic [ref=e87]: 5/28(木) メガコンコルド1177岡崎インター店
+          - generic [ref=e88]:
+            - generic [ref=e89]: 総差枚 +3,465
+            - generic [ref=e90]: 平均 +5
+        - generic [ref=e91] [cursor=pointer]:
+          - generic [ref=e92]: キャッスル岩倉店
+          - generic [ref=e93]: 5/28(木) キャッスル岩倉店
+          - generic [ref=e94]:
+            - generic [ref=e95]: 総差枚 +2,783
+            - generic [ref=e96]: 平均 +31
+        - generic [ref=e97] [cursor=pointer]:
+          - generic [ref=e98]: チャンピオンタイキ竹島店1号館
+          - generic [ref=e99]: 5/28(木) チャンピオンタイキ竹島店1号館
+          - generic [ref=e100]:
+            - generic [ref=e101]: 総差枚 +10,868
+            - generic [ref=e102]: 平均 +91
+        - generic [ref=e103] [cursor=pointer]:
+          - generic [ref=e104]: ダイエー
+          - generic [ref=e105]: 5/28(木) ダイエー
+          - generic [ref=e106]:
+            - generic [ref=e107]: 総差枚 +30,275
+            - generic [ref=e108]: 平均 +199
+        - generic [ref=e109] [cursor=pointer]:
+          - generic [ref=e110]: GOLD玉越浄水店
+          - generic [ref=e111]: 5/28(木) GOLD玉越浄水店
+          - generic [ref=e112]:
+            - generic [ref=e113]: 総差枚 -
+            - generic [ref=e114]: 平均 -
+        - generic [ref=e115] [cursor=pointer]:
+          - generic [ref=e116]: オーギヤ豊川蔵子店
+          - generic [ref=e117]: 5/28(木) オーギヤ豊川蔵子店
+          - generic [ref=e118]:
+            - generic [ref=e119]: 総差枚 +3,334
+            - generic [ref=e120]: 平均 +12
+        - generic [ref=e121] [cursor=pointer]:
+          - generic [ref=e122]: メガガイア一宮
+          - generic [ref=e123]: 5/28(木) メガガイア一宮
+          - generic [ref=e124]:
+            - generic [ref=e125]: 総差枚 +23,850
+            - generic [ref=e126]: 平均 +35
+        - generic [ref=e127] [cursor=pointer]:
+          - generic [ref=e128]: チャンピオンタイキ岡崎伊賀店
+          - generic [ref=e129]: 5/28(木) チャンピオンタイキ岡崎伊賀店
+          - generic [ref=e130]:
+            - generic [ref=e131]: 総差枚 +1,961
+            - generic [ref=e132]: 平均 +47
+        - generic [ref=e133] [cursor=pointer]:
+          - generic [ref=e134]: オーギヤ豊橋駅前店
+          - generic [ref=e135]: 5/28(木) オーギヤ豊橋駅前店
+          - generic [ref=e136]:
+            - generic [ref=e137]: 総差枚 +16,748
+            - generic [ref=e138]: 平均 +195
+        - generic [ref=e139] [cursor=pointer]:
+          - generic [ref=e140]: オーギヤ江南店
+          - generic [ref=e141]: 5/28(木) オーギヤ江南店
+          - generic [ref=e142]:
+            - generic [ref=e143]: 総差枚 +7,709
+            - generic [ref=e144]: 平均 +26
+        - generic [ref=e145] [cursor=pointer]:
+          - generic [ref=e146]: オーギヤグランプリ
+          - generic [ref=e147]: 5/28(木) オーギヤグランプリ
+          - generic [ref=e148]:
+            - generic [ref=e149]: 総差枚 +5,164
+            - generic [ref=e150]: 平均 +40
+        - generic [ref=e151] [cursor=pointer]:
+          - generic [ref=e152]: KEIZ江南店
+          - generic [ref=e153]: 5/28(木) KEIZ江南店
+          - generic [ref=e154]:
+            - generic [ref=e155]: 総差枚 +3,830
+            - generic [ref=e156]: 平均 +10
+        - generic [ref=e157] [cursor=pointer]:
+          - generic [ref=e158]: 有楽共和店
+          - generic [ref=e159]: 5/28(木) 有楽共和店
+          - generic [ref=e160]:
+            - generic [ref=e161]: 総差枚 -
+            - generic [ref=e162]: 平均 -
+        - generic [ref=e163] [cursor=pointer]:
+          - generic [ref=e164]: 京楽会館豊明店
+          - generic [ref=e165]: 5/28(木) 京楽会館豊明店
+          - generic [ref=e166]:
+            - generic [ref=e167]: 総差枚 +13,419
+            - generic [ref=e168]: 平均 +56
+        - generic [ref=e169] [cursor=pointer]:
+          - generic [ref=e170]: がちゃぽん南店
+          - generic [ref=e171]: 5/28(木) がちゃぽん南店
+          - generic [ref=e172]:
+            - generic [ref=e173]: 総差枚 +3,762
+            - generic [ref=e174]: 平均 +16
+        - generic [ref=e175] [cursor=pointer]:
+          - generic [ref=e176]: ラッキー一番江南店
+          - generic [ref=e177]: 5/28(木) ラッキー一番江南店
+          - generic [ref=e178]:
+            - generic [ref=e179]: 総差枚 +9,584
+            - generic [ref=e180]: 平均 +45
+        - generic [ref=e181] [cursor=pointer]:
+          - generic [ref=e182]: KEIZ大高店
+          - generic [ref=e183]: 5/28(木) KEIZ大高店
+          - generic [ref=e184]:
+            - generic [ref=e185]: 総差枚 +6,347
+            - generic [ref=e186]: 平均 +12
+        - generic [ref=e187] [cursor=pointer]:
+          - generic [ref=e188]: ラッキープラザ1000津島店
+          - generic [ref=e189]: 5/28(木) ラッキープラザ1000津島店
+          - generic [ref=e190]:
+            - generic [ref=e191]: 総差枚 +20,294
+            - generic [ref=e192]: 平均 +56
+        - generic [ref=e193] [cursor=pointer]:
+          - generic [ref=e194]: SLOT Zing 大島店
+          - generic [ref=e195]: 5/28(木) SLOT Zing 大島店
+          - generic [ref=e196]:
+            - generic [ref=e197]: 総差枚 +25,271
+            - generic [ref=e198]: 平均 +222
+        - generic [ref=e199] [cursor=pointer]:
+          - generic [ref=e200]: タイキ豊橋仲ノ店
+          - generic [ref=e201]: 5/28(木) タイキ豊橋仲ノ店
+          - generic [ref=e202]:
+            - generic [ref=e203]: 総差枚 +11,569
+            - generic [ref=e204]: 平均 +52
+        - generic [ref=e205] [cursor=pointer]:
+          - generic [ref=e206]: 有楽りんくう店
+          - generic [ref=e207]: 5/28(木) 有楽りんくう店
+          - generic [ref=e208]:
+            - generic [ref=e209]: 総差枚 -
+            - generic [ref=e210]: 平均 -
+        - generic [ref=e211] [cursor=pointer]:
+          - generic [ref=e212]: KYORAKU妙音通店
+          - generic [ref=e213]: 5/28(木) KYORAKU妙音通店
+          - generic [ref=e214]:
+            - generic [ref=e215]: 総差枚 +9,833
+            - generic [ref=e216]: 平均 +38
+        - generic [ref=e217] [cursor=pointer]:
+          - generic [ref=e218]: オータ岡崎店
+          - generic [ref=e219]: 5/28(木) オータ岡崎店
+          - generic [ref=e220]:
+            - generic [ref=e221]: 総差枚 +1,538
+            - generic [ref=e222]: 平均 +8
+        - generic [ref=e223] [cursor=pointer]:
+          - generic [ref=e224]: 名宝田原店
+          - generic [ref=e225]: 5/28(木) 名宝田原店
+          - generic [ref=e226]:
+            - generic [ref=e227]: 総差枚 -
+            - generic [ref=e228]: 平均 -
+        - generic [ref=e229] [cursor=pointer]:
+          - generic [ref=e230]: M&K道光寺店
+          - generic [ref=e231]: 5/28(木) M&K道光寺店
+          - generic [ref=e232]:
+            - generic [ref=e233]: 総差枚 +3,977
+            - generic [ref=e234]: 平均 +21
+        - generic [ref=e235] [cursor=pointer]:
+          - generic [ref=e236]: ベイシティ名宝大須店
+          - generic [ref=e237]: 5/28(木) ベイシティ名宝大須店
+          - generic [ref=e238]:
+            - generic [ref=e239]: 総差枚 -
+            - generic [ref=e240]: 平均 -
+        - generic [ref=e241] [cursor=pointer]:
+          - generic [ref=e242]: プリンス
+          - generic [ref=e243]: 5/28(木) プリンス
+          - generic [ref=e244]:
+            - generic [ref=e245]: 総差枚 -
+            - generic [ref=e246]: 平均 -
+        - generic [ref=e247] [cursor=pointer]:
+          - generic [ref=e248]: タイホウ中川中野橋東店
+          - generic [ref=e249]: 5/28(木) タイホウ中川中野橋東店
+          - generic [ref=e250]:
+            - generic [ref=e251]: 総差枚 -
+            - generic [ref=e252]: 平均 -

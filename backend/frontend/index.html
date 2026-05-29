@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P店データリサーチ</title>
+<style>
+  :root{
+    --bg:#0f1419; --panel:#1a2027; --panel2:#222b35; --line:#2e3946;
+    --txt:#e6edf3; --sub:#8b98a5; --accent:#3b82f6; --accent2:#1d4ed8;
+    --plus:#22c55e; --minus:#ef4444; --chip:#2b3642;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Hiragino Sans","Yu Gothic UI",sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
+  header{background:linear-gradient(135deg,#1d4ed8,#3b82f6);padding:18px 24px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 12px rgba(0,0,0,.4)}
+  header h1{font-size:20px;font-weight:700;letter-spacing:.5px}
+  header .badge{font-size:11px;background:rgba(255,255,255,.2);padding:3px 8px;border-radius:10px}
+  .wrap{display:flex;min-height:calc(100vh - 60px)}
+  .sidebar{width:230px;background:var(--panel);border-right:1px solid var(--line);padding:16px;overflow-y:auto}
+  .region{margin-bottom:14px}
+  .region-title{font-size:12px;color:var(--sub);font-weight:700;margin-bottom:6px;padding-left:4px}
+  .pref{display:block;width:100%;text-align:left;background:none;border:none;color:var(--txt);
+        padding:7px 10px;border-radius:7px;cursor:pointer;font-size:14px;transition:.15s}
+  .pref:hover{background:var(--panel2)}
+  .pref.active{background:var(--accent);color:#fff;font-weight:700}
+  .main{flex:1;padding:24px;overflow-y:auto}
+  .toolbar{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+  .toolbar h2{font-size:18px}
+  .hint{color:var(--sub);font-size:13px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;transition:.15s}
+  .card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+  .card .name{font-weight:700;font-size:15px;margin-bottom:8px}
+  .card .meta{display:flex;gap:14px;font-size:13px}
+  .card .label{color:var(--sub);font-size:12px;margin-bottom:10px}
+  .num{font-variant-numeric:tabular-nums;font-weight:700}
+  .plus{color:var(--plus)} .minus{color:var(--minus)}
+  .loading{color:var(--sub);padding:40px;text-align:center}
+  .spinner{display:inline-block;width:18px;height:18px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;z-index:50}
+  .overlay.open{display:flex}
+  .modal{background:var(--panel);border:1px solid var(--line);border-radius:14px;max-width:900px;width:100%;padding:24px}
+  .modal h3{font-size:18px;margin-bottom:4px}
+  .modal .url{color:var(--sub);font-size:12px;margin-bottom:18px;word-break:break-all}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:22px}
+  .stat{background:var(--panel2);border-radius:10px;padding:12px}
+  .stat .k{font-size:11px;color:var(--sub)}
+  .stat .v{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:22px}
+  th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+  th{color:var(--sub);font-size:11px;font-weight:700;position:sticky;top:0;background:var(--panel)}
+  td.l,th.l{text-align:left}
+  .sec-title{font-size:14px;font-weight:700;margin:6px 0 10px;border-left:3px solid var(--accent);padding-left:8px}
+  .close{float:right;background:var(--chip);border:none;color:var(--txt);border-radius:8px;padding:6px 12px;cursor:pointer}
+  .close:hover{background:var(--minus)}
+  .scroll{max-height:340px;overflow-y:auto}
+  .err{color:var(--minus);padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎰 P店データリサーチ</h1>
+  <span class="badge">v1.0 / みんレポ連携</span>
+</header>
+<div class="wrap">
+  <aside class="sidebar" id="sidebar"><div class="loading"><span class="spinner"></span></div></aside>
+  <main class="main">
+    <div class="toolbar">
+      <h2 id="mainTitle">エリアを選択してください</h2>
+      <span class="hint" id="mainHint">左のメニューから都道府県を選ぶと、最新レポートのある店舗が一覧表示されます。</span>
+    </div>
+    <div id="content"></div>
+  </main>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+const API = "/api/v1";
+let currentPref = null;
+
+const fmt = n => (n==null?"-":(n>0?"+":"")+n.toLocaleString());
+const cls = n => n==null?"":(n>0?"plus":(n<0?"minus":""));
+
+async function loadPrefectures(){
+  const res = await fetch(`${API}/browse/prefectures`);
+  const groups = await res.json();
+  const sb = document.getElementById("sidebar");
+  sb.innerHTML = groups.map(g => `
+    <div class="region">
+      <div class="region-title">${g.region}</div>
+      ${g.prefectures.map(p=>`<button class="pref" data-pref="${p}">${p}</button>`).join("")}
+    </div>`).join("");
+  sb.querySelectorAll(".pref").forEach(btn=>{
+    btn.onclick=()=>selectPref(btn.dataset.pref, btn);
+  });
+}
+
+async function selectPref(pref, btn){
+  currentPref = pref;
+  document.querySelectorAll(".pref").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("mainTitle").textContent = `${pref} の店舗`;
+  document.getElementById("mainHint").textContent = "店舗カードをクリックすると、その日のデータを取得して分析します。";
+  const content = document.getElementById("content");
+  content.innerHTML = `<div class="loading"><span class="spinner"></span>店舗一覧を取得中…</div>`;
+  try{
+    const res = await fetch(`${API}/browse/stores?prefecture=${encodeURIComponent(pref)}`);
+    if(!res.ok) throw new Error((await res.json()).detail || res.statusText);
+    const data = await res.json();
+    if(!data.stores.length){ content.innerHTML=`<div class="hint">該当する店舗が見つかりませんでした。</div>`; return;}
+    content.innerHTML = `<div class="grid">${data.stores.map(s=>`
+      <div class="card" data-url="${s.report_url}" data-name="${s.store_name}">
+        <div class="name">${s.store_name}</div>
+        <div class="label">${s.report_label}</div>
+        <div class="meta">
+          <div><span class="hint">総差枚</span> <span class="num ${cls(s.total_diff)}">${fmt(s.total_diff)}</span></div>
+          <div><span class="hint">平均</span> <span class="num ${cls(s.avg_diff)}">${fmt(s.avg_diff)}</span></div>
+        </div>
+      </div>`).join("")}</div>`;
+    content.querySelectorAll(".card").forEach(c=>{
+      c.onclick=()=>research(c.dataset.url, c.dataset.name);
+    });
+  }catch(e){
+    content.innerHTML=`<div class="err">取得エラー: ${e.message}</div>`;
+  }
+}
+
+async function research(url, name){
+  const overlay=document.getElementById("overlay"), modal=document.getElementById("modal");
+  overlay.classList.add("open");
+  modal.innerHTML=`<button class="close" onclick="closeModal()">閉じる</button>
+    <div class="loading"><span class="spinner"></span>${name} のデータを取得・分析中…</div>`;
+  try{
+    const res=await fetch(`${API}/browse/research`,{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({report_url:url})
+    });
+    if(!res.ok) throw new Error((await res.json()).detail || res.statusText);
+    const d=await res.json();
+    renderResult(modal, name, d);
+  }catch(e){
+    modal.innerHTML=`<button class="close" onclick="closeModal()">閉じる</button><div class="err">分析エラー: ${e.message}</div>`;
+  }
+}
+
+function renderResult(modal, name, d){
+  const wr=(d.win_rate*100).toFixed(1);
+  modal.innerHTML=`
+    <button class="close" onclick="closeModal()">閉じる</button>
+    <h3>${name}</h3>
+    <div class="url">${d.report_url}</div>
+    <div class="stats">
+      <div class="stat"><div class="k">総差枚</div><div class="v ${cls(d.total_diff_medals)}">${fmt(d.total_diff_medals)}</div></div>
+      <div class="stat"><div class="k">平均差枚</div><div class="v ${cls(d.avg_diff_medals)}">${fmt(d.avg_diff_medals)}</div></div>
+      <div class="stat"><div class="k">平均G数</div><div class="v">${d.avg_games.toLocaleString()}</div></div>
+      <div class="stat"><div class="k">勝率</div><div class="v">${wr}%</div></div>
+      <div class="stat"><div class="k">総台数</div><div class="v">${d.total_units}</div></div>
+      <div class="stat"><div class="k">プラス台</div><div class="v plus">${d.plus_unit_count}</div></div>
+    </div>
+    <div class="sec-title">機種別データ（差枚順）</div>
+    <div class="scroll"><table>
+      <thead><tr><th class="l">機種</th><th>台数</th><th>総差枚</th><th>平均差枚</th><th>平均G数</th><th>勝率</th></tr></thead>
+      <tbody>${d.machines.map(m=>`<tr>
+        <td class="l">${m.machine_name}</td>
+        <td class="num">${m.total_units}</td>
+        <td class="num ${cls(m.total_diff_medals)}">${fmt(m.total_diff_medals)}</td>
+        <td class="num ${cls(m.avg_diff_medals)}">${fmt(m.avg_diff_medals)}</td>
+        <td class="num">${m.avg_games.toLocaleString()}</td>
+        <td class="num">${(m.win_rate*100).toFixed(0)}%</td>
+      </tr>`).join("")}</tbody>
+    </table></div>
+    <div class="sec-title">差枚ランキング TOP30</div>
+    <div class="scroll"><table>
+      <thead><tr><th>#</th><th>台番</th><th class="l">機種</th><th>差枚</th><th>G数</th></tr></thead>
+      <tbody>${d.top_units.map(u=>`<tr>
+        <td class="num">${u.rank}</td>
+        <td class="num">${u.unit_number}</td>
+        <td class="l">${u.machine_name}</td>
+        <td class="num ${cls(u.diff_medals)}">${fmt(u.diff_medals)}</td>
+        <td class="num">${u.games?u.games.toLocaleString():"-"}</td>
+      </tr>`).join("")}</tbody>
+    </table></div>`;
+}
+
+function closeModal(){ document.getElementById("overlay").classList.remove("open"); }
+document.getElementById("overlay").onclick=e=>{ if(e.target.id==="overlay") closeModal(); };
+
+loadPrefectures();
+</script>
+</body>
+</html>

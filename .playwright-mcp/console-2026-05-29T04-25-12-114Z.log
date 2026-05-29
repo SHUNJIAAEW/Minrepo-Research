@@ -1,0 +1,20 @@
+[    1956ms] [WARNING] [GPT] PubAdsService.disableInitialLoad is deprecated, use googletag.setConfig({disableInitialLoad: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605220101/pubads_impl.js?cb=31098759:18
+[    2504ms] [LOG] Called iframe: creative-p.undertone.com [] 
+Number of topics:  0 @ https://creative-p.undertone.com/spk-public/topics_frame.html?bidder=undertone:17
+[    2504ms] [LOG] Called iframe: cdn.taboola.com [] 
+Number of topics:  0 @ https://cdn.taboola.com/libtrc/static/topics/taboola-prebid-browsing-topics.html?bidder=taboola:11
+[    2504ms] [LOG] Message: {"segment":{"domain":"cdn.taboola.com","bidder":"taboola","topics":[]},"date":1780028714618} @ https://cdn.taboola.com/libtrc/static/topics/taboola-prebid-browsing-topics.html?bidder=taboola:37
+[    2525ms] [LOG] Called iframe: api.popin.cc [] 
+Number of topics:  0 @ https://api.popin.cc/topic/prebid-topics-frame.html?bidder=discovery:11
+[    2525ms] [LOG] Message: {"segment":{"domain":"api.popin.cc","bidder":"Discovery","topics":[]},"date":1780028714639} @ https://api.popin.cc/topic/prebid-topics-frame.html?bidder=discovery:37
+[    2541ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    2897ms] [WARNING] [GPT] Slot.updateTargetingFromMap is deprecated, use Slot.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#171 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202605220101/pubads_impl.js?cb=31098759:18
+[    2541ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    4595ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    2541ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    4595ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    4695ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    6257ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://cs.nex8.net/cs/openx:0
+[   10006ms] [ERROR] Failed to load resource: net::ERR_TOO_MANY_REDIRECTS @ https://id5-sync.com/c/1216/826/1/8.gif?puid=a3cc5a71-bca1-4fd9-b079-6d9d9e9e4dc5-6a191531-4a50&gdpr=0&gdpr_consent=:0
