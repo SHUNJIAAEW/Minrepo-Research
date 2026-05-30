@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
 from app.core.config import settings
-from app.api.routes import stores, analysis, batch, browse
+from app.api.routes import stores, analysis, batch, browse, hermes
 
 app = FastAPI(title=settings.APP_NAME, version="1.0.0")
 
@@ -18,10 +18,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.middleware("http")
+async def security_headers(request, call_next):
+    response = await call_next(request)
+    # インラインscript/styleを使うSPAのため 'unsafe-inline' を許可。
+    # XSS本体はフロント側のエスケープ(esc())で対策済み。多層防御として付与。
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; "
+        "script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline'; "
+        "connect-src 'self'; img-src 'self' data:; "
+        "object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+    )
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["Referrer-Policy"] = "no-referrer"
+    return response
+
+
 app.include_router(stores.router, prefix="/api/v1")
 app.include_router(analysis.router, prefix="/api/v1")
 app.include_router(batch.router, prefix="/api/v1")
 app.include_router(browse.router, prefix="/api/v1")
+app.include_router(hermes.router, prefix="/api/v1")
 
 
 @app.get("/health")

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import date
 from typing import Optional
 
-from sqlalchemy import select
+from sqlalchemy import select, delete
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import UnitResult, MachineResult, DailyReport
@@ -53,6 +53,16 @@ async def run_analysis(store_id: int, record_date: date, db: AsyncSession) -> An
         raise ValueError(f"No unit data for store={store_id} date={record_date}")
 
     summary = analyze_units(rows)
+
+    # 再分析時の二重計上を防ぐため、同一 store/date の既存集計を削除してから再投入
+    await db.execute(delete(MachineResult).where(
+        MachineResult.store_id == store_id,
+        MachineResult.record_date == record_date,
+    ))
+    await db.execute(delete(DailyReport).where(
+        DailyReport.store_id == store_id,
+        DailyReport.record_date == record_date,
+    ))
 
     for ms in summary.machine_summaries:
         db.add(MachineResult(store_id=store_id, record_date=record_date, **ms.__dict__))

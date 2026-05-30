@@ -37,17 +37,38 @@ class AnalysisSummary:
     machine_summaries: list[MachineSummary] = field(default_factory=list)
 
 
+def _summarize(units: list[UnitLike]) -> dict:
+    """
+    欠損値(None)は平均・勝率の母数から除外する。
+    - total_units: 設置台数（全件）
+    - 平均/勝率: 値が取得できた台のみを母数にする（未取得台を0扱いして歪めない）
+    """
+    total_units = len(units)
+    diff_units = [u for u in units if u.diff_medals is not None]
+    game_units = [u for u in units if u.games is not None]
+
+    total_diff = sum(u.diff_medals for u in diff_units)
+    plus_count = sum(1 for u in diff_units if u.diff_medals > 0)
+
+    avg_diff = round(total_diff / len(diff_units), 1) if diff_units else 0.0
+    avg_games = round(sum(u.games for u in game_units) / len(game_units), 1) if game_units else 0.0
+    win_rate = round(plus_count / len(diff_units), 4) if diff_units else 0.0
+
+    return {
+        "total_units": total_units,
+        "total_diff_medals": total_diff,
+        "avg_diff_medals": avg_diff,
+        "avg_games": avg_games,
+        "win_rate": win_rate,
+        "plus_unit_count": plus_count,
+    }
+
+
 def analyze_units(units: list[UnitLike]) -> AnalysisSummary:
     if not units:
         raise ValueError("No unit data to analyze")
 
-    total_units = len(units)
-    plus_units = [u for u in units if (u.diff_medals or 0) > 0]
-    total_diff = sum(u.diff_medals or 0 for u in units)
-    total_games = sum(u.games or 0 for u in units)
-    avg_diff = total_diff / total_units
-    avg_games = total_games / total_units
-    win_rate = len(plus_units) / total_units
+    overall = _summarize(units)
 
     machine_map: dict[str, list] = {}
     for u in units:
@@ -55,30 +76,28 @@ def analyze_units(units: list[UnitLike]) -> AnalysisSummary:
 
     machine_summaries: list[MachineSummary] = []
     for name, m_units in machine_map.items():
-        m_total = sum(u.diff_medals or 0 for u in m_units)
-        m_plus = len([u for u in m_units if (u.diff_medals or 0) > 0])
-        m_win = m_plus / len(m_units)
+        s = _summarize(m_units)
         machine_summaries.append(MachineSummary(
             machine_name=name,
-            total_units=len(m_units),
-            total_diff_medals=m_total,
-            avg_diff_medals=round(m_total / len(m_units), 1),
-            avg_games=round(sum(u.games or 0 for u in m_units) / len(m_units), 1),
-            win_rate=round(m_win, 4),
-            plus_unit_ratio=round(m_win, 4),
+            total_units=s["total_units"],
+            total_diff_medals=s["total_diff_medals"],
+            avg_diff_medals=s["avg_diff_medals"],
+            avg_games=s["avg_games"],
+            win_rate=s["win_rate"],
+            plus_unit_ratio=s["win_rate"],
         ))
 
     machine_summaries.sort(key=lambda x: x.total_diff_medals, reverse=True)
     top_machine = machine_summaries[0].machine_name if machine_summaries else None
 
     return AnalysisSummary(
-        total_units=total_units,
-        total_diff_medals=total_diff,
-        avg_diff_medals=round(avg_diff, 1),
-        avg_games=round(avg_games, 1),
-        win_rate=round(win_rate, 4),
-        plus_unit_count=len(plus_units),
-        plus_unit_ratio=round(win_rate, 4),
+        total_units=overall["total_units"],
+        total_diff_medals=overall["total_diff_medals"],
+        avg_diff_medals=overall["avg_diff_medals"],
+        avg_games=overall["avg_games"],
+        win_rate=overall["win_rate"],
+        plus_unit_count=overall["plus_unit_count"],
+        plus_unit_ratio=overall["win_rate"],
         top_machine=top_machine,
         machine_summaries=machine_summaries,
     )

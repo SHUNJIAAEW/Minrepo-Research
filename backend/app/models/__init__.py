@@ -6,6 +6,7 @@ from .daily_report import DailyReport
 from .delivery_setting import DeliverySetting
 from .collection_log import CollectionLog
 from .error_log import ErrorLog
+from .hermes_run import HermesRun
 
 __all__ = [
     "Store",
@@ -16,4 +17,5 @@ __all__ = [
     "DeliverySetting",
     "CollectionLog",
     "ErrorLog",
+    "HermesRun",
 ]

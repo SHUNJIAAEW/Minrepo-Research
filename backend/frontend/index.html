@@ -85,6 +85,10 @@ let currentPref = null;
 
 const fmt = n => (n==null?"-":(n>0?"+":"")+n.toLocaleString());
 const cls = n => n==null?"":(n>0?"plus":(n<0?"minus":""));
+// XSS対策: スクレイプ元の文字列をHTMLに挿入する前に必ずエスケープする
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
 
 async function loadPrefectures(){
   const res = await fetch(`${API}/browse/prefectures`);
@@ -93,7 +97,7 @@ async function loadPrefectures(){
   sb.innerHTML = groups.map(g => `
     <div class="region">
       <div class="region-title">${g.region}</div>
-      ${g.prefectures.map(p=>`<button class="pref" data-pref="${p}">${p}</button>`).join("")}
+      ${g.prefectures.map(p=>`<button class="pref" data-pref="${esc(p)}">${esc(p)}</button>`).join("")}
     </div>`).join("");
   sb.querySelectorAll(".pref").forEach(btn=>{
     btn.onclick=()=>selectPref(btn.dataset.pref, btn);
@@ -114,9 +118,9 @@ async function selectPref(pref, btn){
     const data = await res.json();
     if(!data.stores.length){ content.innerHTML=`<div class="hint">該当する店舗が見つかりませんでした。</div>`; return;}
     content.innerHTML = `<div class="grid">${data.stores.map(s=>`
-      <div class="card" data-url="${s.report_url}" data-name="${s.store_name}">
-        <div class="name">${s.store_name}</div>
-        <div class="label">${s.report_label}</div>
+      <div class="card" data-url="${esc(s.report_url)}" data-name="${esc(s.store_name)}">
+        <div class="name">${esc(s.store_name)}</div>
+        <div class="label">${esc(s.report_label)}</div>
         <div class="meta">
           <div><span class="hint">総差枚</span> <span class="num ${cls(s.total_diff)}">${fmt(s.total_diff)}</span></div>
           <div><span class="hint">平均</span> <span class="num ${cls(s.avg_diff)}">${fmt(s.avg_diff)}</span></div>
@@ -126,7 +130,7 @@ async function selectPref(pref, btn){
       c.onclick=()=>research(c.dataset.url, c.dataset.name);
     });
   }catch(e){
-    content.innerHTML=`<div class="err">取得エラー: ${e.message}</div>`;
+    content.innerHTML=`<div class="err">取得エラー: ${esc(e.message)}</div>`;
   }
 }
 
@@ -134,7 +138,7 @@ async function research(url, name){
   const overlay=document.getElementById("overlay"), modal=document.getElementById("modal");
   overlay.classList.add("open");
   modal.innerHTML=`<button class="close" onclick="closeModal()">閉じる</button>
-    <div class="loading"><span class="spinner"></span>${name} のデータを取得・分析中…</div>`;
+    <div class="loading"><span class="spinner"></span>${esc(name)} のデータを取得・分析中…</div>`;
   try{
     const res=await fetch(`${API}/browse/research`,{
       method:"POST",headers:{"Content-Type":"application/json"},
@@ -144,7 +148,7 @@ async function research(url, name){
     const d=await res.json();
     renderResult(modal, name, d);
   }catch(e){
-    modal.innerHTML=`<button class="close" onclick="closeModal()">閉じる</button><div class="err">分析エラー: ${e.message}</div>`;
+    modal.innerHTML=`<button class="close" onclick="closeModal()">閉じる</button><div class="err">分析エラー: ${esc(e.message)}</div>`;
   }
 }
 
@@ -152,8 +156,8 @@ function renderResult(modal, name, d){
   const wr=(d.win_rate*100).toFixed(1);
   modal.innerHTML=`
     <button class="close" onclick="closeModal()">閉じる</button>
-    <h3>${name}</h3>
-    <div class="url">${d.report_url}</div>
+    <h3>${esc(name)}</h3>
+    <div class="url">${esc(d.report_url)}</div>
     <div class="stats">
       <div class="stat"><div class="k">総差枚</div><div class="v ${cls(d.total_diff_medals)}">${fmt(d.total_diff_medals)}</div></div>
       <div class="stat"><div class="k">平均差枚</div><div class="v ${cls(d.avg_diff_medals)}">${fmt(d.avg_diff_medals)}</div></div>
@@ -166,7 +170,7 @@ function renderResult(modal, name, d){
     <div class="scroll"><table>
       <thead><tr><th class="l">機種</th><th>台数</th><th>総差枚</th><th>平均差枚</th><th>平均G数</th><th>勝率</th></tr></thead>
       <tbody>${d.machines.map(m=>`<tr>
-        <td class="l">${m.machine_name}</td>
+        <td class="l">${esc(m.machine_name)}</td>
         <td class="num">${m.total_units}</td>
         <td class="num ${cls(m.total_diff_medals)}">${fmt(m.total_diff_medals)}</td>
         <td class="num ${cls(m.avg_diff_medals)}">${fmt(m.avg_diff_medals)}</td>
@@ -180,7 +184,7 @@ function renderResult(modal, name, d){
       <tbody>${d.top_units.map(u=>`<tr>
         <td class="num">${u.rank}</td>
         <td class="num">${u.unit_number}</td>
-        <td class="l">${u.machine_name}</td>
+        <td class="l">${esc(u.machine_name)}</td>
         <td class="num ${cls(u.diff_medals)}">${fmt(u.diff_medals)}</td>
         <td class="num">${u.games?u.games.toLocaleString():"-"}</td>
       </tr>`).join("")}</tbody>

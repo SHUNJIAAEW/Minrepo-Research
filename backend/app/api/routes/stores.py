@@ -5,8 +5,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.base import get_db
 from app.models import Store, DataSource
 from app.schemas.store import StoreCreate, StoreRead, DataSourceCreate
+from app.core.security import require_api_key
 
-router = APIRouter(prefix="/stores", tags=["stores"])
+router = APIRouter(prefix="/stores", tags=["stores"], dependencies=[Depends(require_api_key)])
 
 
 @router.get("/", response_model=list[StoreRead])

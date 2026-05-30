@@ -35,16 +35,12 @@ class MinnrepoScraper(BaseScraper):
         table（クラスなし）: 機種 | 台番 | 差枚 | G数 | 出率
         ヘッダ行は th で構成される。
         """
-        # クラスなしのtableを取得（halllistなど他テーブルを除外）
-        table = None
-        for t in soup.find_all("table"):
-            cls = t.get("class", [])
-            if not cls:
-                table = t
-                break
-
+        table = self._find_unit_table(soup)
         if table is None:
             return []
+
+        # ヘッダ名から列インデックスを特定（列順変更に強くする）
+        col = self._column_index(table)
 
         units = []
         for row in table.select("tbody tr"):
@@ -52,10 +48,13 @@ class MinnrepoScraper(BaseScraper):
             if len(cells) < 4:
                 continue
 
-            machine_name = cells[0].get_text(strip=True)
-            unit_number = self._to_int(cells[1].get_text())
-            diff_medals = self._to_int(cells[2].get_text())
-            games = self._to_int(cells[3].get_text())
+            try:
+                machine_name = cells[col["機種"]].get_text(strip=True)
+                unit_number = self._to_int(cells[col["台番"]].get_text())
+                diff_medals = self._to_int(cells[col["差枚"]].get_text())
+                games = self._to_int(cells[col["G数"]].get_text())
+            except (KeyError, IndexError):
+                continue
 
             if not machine_name or unit_number is None:
                 continue
@@ -68,6 +67,28 @@ class MinnrepoScraper(BaseScraper):
             ))
 
         return units
+
+    # 全台一覧テーブルが必ず持つヘッダ
+    _REQUIRED_HEADERS = {"機種", "台番", "差枚", "G数"}
+
+    def _find_unit_table(self, soup):
+        """ヘッダ名に「機種/台番/差枚/G数」を全て含むtableを台データ表として選ぶ"""
+        for t in soup.find_all("table"):
+            headers = {th.get_text(strip=True) for th in t.select("th")}
+            if self._REQUIRED_HEADERS.issubset(headers):
+                return t
+        return None
+
+    @staticmethod
+    def _column_index(table) -> dict[str, int]:
+        """ヘッダ行から列名 -> 列インデックスのマップを作る"""
+        ths = table.select("tr th")
+        idx = {}
+        for i, th in enumerate(ths):
+            label = th.get_text(strip=True)
+            if label and label not in idx:
+                idx[label] = i
+        return idx
 
     @staticmethod
     def _to_int(text: str) -> int | None:

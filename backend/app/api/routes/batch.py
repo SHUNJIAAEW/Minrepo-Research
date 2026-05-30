@@ -1,11 +1,12 @@
 """手動トリガー用エンドポイント（開発・デバッグ用）"""
 from datetime import date
-from fastapi import APIRouter, BackgroundTasks, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends
 
 from app.batch.jobs import collect_store, analyze_and_deliver_job
 from app.db.base import AsyncSessionLocal
+from app.core.security import require_api_key
 
-router = APIRouter(prefix="/batch", tags=["batch"])
+router = APIRouter(prefix="/batch", tags=["batch"], dependencies=[Depends(require_api_key)])
 
 
 @router.post("/collect/{store_id}")

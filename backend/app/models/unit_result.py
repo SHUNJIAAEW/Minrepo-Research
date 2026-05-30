@@ -1,5 +1,5 @@
 from datetime import date
-from sqlalchemy import String, Integer, Float, Date, ForeignKey
+from sqlalchemy import String, Integer, Float, Date, ForeignKey, UniqueConstraint, Index
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
 from .mixins import TimestampMixin
@@ -8,6 +8,10 @@ from .mixins import TimestampMixin
 class UnitResult(Base, TimestampMixin):
     """台番別実績"""
     __tablename__ = "unit_results"
+    __table_args__ = (
+        UniqueConstraint("store_id", "record_date", "unit_number", name="uq_unit_store_date_no"),
+        Index("ix_unit_store_date", "store_id", "record_date"),
+    )
 
     id: Mapped[int] = mapped_column(primary_key=True)
     store_id: Mapped[int] = mapped_column(ForeignKey("stores.id"), nullable=False)

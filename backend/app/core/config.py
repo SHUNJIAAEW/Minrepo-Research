@@ -17,6 +17,9 @@ class Settings(BaseSettings):
     # Security
     SECRET_KEY: str = "change-me-in-production"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24
+    # 操作系API（店舗登録・データソース追加・バッチ実行）の保護用APIキー。
+    # 本番では必ず環境変数で上書きすること。
+    ADMIN_API_KEY: str = "change-me-admin-key"
 
     # Scraping
     SCRAPE_REQUEST_INTERVAL: float = 2.0  # seconds between requests

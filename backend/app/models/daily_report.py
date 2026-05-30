@@ -1,5 +1,5 @@
 from datetime import date
-from sqlalchemy import String, Integer, Float, Date, ForeignKey, Text
+from sqlalchemy import String, Integer, Float, Date, ForeignKey, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 from app.db.base import Base
 from .mixins import TimestampMixin
@@ -7,6 +7,9 @@ from .mixins import TimestampMixin
 
 class DailyReport(Base, TimestampMixin):
     __tablename__ = "daily_reports"
+    __table_args__ = (
+        UniqueConstraint("store_id", "record_date", name="uq_report_store_date"),
+    )
 
     id: Mapped[int] = mapped_column(primary_key=True)
     store_id: Mapped[int] = mapped_column(ForeignKey("stores.id"), nullable=False)

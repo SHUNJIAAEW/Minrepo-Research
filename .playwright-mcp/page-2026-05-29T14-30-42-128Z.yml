@@ -1,0 +1,810 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - heading "🎰 P店データリサーチ" [level=1] [ref=e3]
+    - generic [ref=e4]: v1.0 / みんレポ連携
+  - generic [ref=e5]:
+    - complementary [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e8]: 北海道・東北
+        - button "北海道" [ref=e9] [cursor=pointer]
+        - button "青森県" [ref=e10] [cursor=pointer]
+        - button "岩手県" [ref=e11] [cursor=pointer]
+        - button "宮城県" [ref=e12] [cursor=pointer]
+        - button "秋田県" [ref=e13] [cursor=pointer]
+        - button "山形県" [ref=e14] [cursor=pointer]
+        - button "福島県" [ref=e15] [cursor=pointer]
+      - generic [ref=e16]:
+        - generic [ref=e17]: 関東
+        - button "茨城県" [ref=e18] [cursor=pointer]
+        - button "栃木県" [ref=e19] [cursor=pointer]
+        - button "群馬県" [ref=e20] [cursor=pointer]
+        - button "埼玉県" [ref=e21] [cursor=pointer]
+        - button "千葉県" [ref=e22] [cursor=pointer]
+        - button "東京都" [ref=e23] [cursor=pointer]
+        - button "神奈川県" [ref=e24] [cursor=pointer]
+      - generic [ref=e25]:
+        - generic [ref=e26]: 中部
+        - button "新潟県" [ref=e27] [cursor=pointer]
+        - button "富山県" [ref=e28] [cursor=pointer]
+        - button "石川県" [ref=e29] [cursor=pointer]
+        - button "福井県" [ref=e30] [cursor=pointer]
+        - button "山梨県" [ref=e31] [cursor=pointer]
+        - button "長野県" [ref=e32] [cursor=pointer]
+        - button "岐阜県" [ref=e33] [cursor=pointer]
+        - button "静岡県" [ref=e34] [cursor=pointer]
+        - button "愛知県" [ref=e35] [cursor=pointer]
+      - generic [ref=e36]:
+        - generic [ref=e37]: 近畿
+        - button "三重県" [ref=e38] [cursor=pointer]
+        - button "滋賀県" [ref=e39] [cursor=pointer]
+        - button "京都府" [ref=e40] [cursor=pointer]
+        - button "大阪府" [ref=e41] [cursor=pointer]
+        - button "兵庫県" [ref=e42] [cursor=pointer]
+        - button "奈良県" [ref=e43] [cursor=pointer]
+        - button "和歌山県" [ref=e44] [cursor=pointer]
+      - generic [ref=e45]:
+        - generic [ref=e46]: 中国・四国
+        - button "鳥取県" [ref=e47] [cursor=pointer]
+        - button "島根県" [ref=e48] [cursor=pointer]
+        - button "岡山県" [ref=e49] [cursor=pointer]
+        - button "広島県" [ref=e50] [cursor=pointer]
+        - button "山口県" [ref=e51] [cursor=pointer]
+        - button "徳島県" [ref=e52] [cursor=pointer]
+        - button "香川県" [ref=e53] [cursor=pointer]
+        - button "愛媛県" [ref=e54] [cursor=pointer]
+        - button "高知県" [ref=e55] [cursor=pointer]
+      - generic [ref=e56]:
+        - generic [ref=e57]: 九州・沖縄
+        - button "福岡県" [ref=e58] [cursor=pointer]
+        - button "佐賀県" [ref=e59] [cursor=pointer]
+        - button "長崎県" [ref=e60] [cursor=pointer]
+        - button "熊本県" [ref=e61] [cursor=pointer]
+        - button "大分県" [ref=e62] [cursor=pointer]
+        - button "宮崎県" [ref=e63] [cursor=pointer]
+        - button "鹿児島県" [ref=e64] [cursor=pointer]
+        - button "沖縄県" [ref=e65] [cursor=pointer]
+    - main [ref=e66]:
+      - generic [ref=e67]:
+        - heading "東京都 の店舗" [level=2] [ref=e70]
+        - generic [ref=e69]: 店舗カードをクリックすると、その日のデータを取得して分析します。
+      - generic [ref=e72]:
+        - generic [ref=e73] [cursor=pointer]:
+          - generic [ref=e74]: マルハン池袋店
+          - generic [ref=e75]: 5/28(木) マルハン池袋店
+          - generic [ref=e76]:
+            - generic [ref=e77]: 総差枚 +55,100
+            - generic [ref=e78]: 平均 +216
+        - generic [ref=e79] [cursor=pointer]:
+          - generic [ref=e80]: やすだ仲宿店
+          - generic [ref=e81]: 5/28(木) やすだ仲宿店
+          - generic [ref=e82]:
+            - generic [ref=e83]: 総差枚 +11,230
+            - generic [ref=e84]: 平均 +88
+        - generic [ref=e85] [cursor=pointer]:
+          - generic [ref=e86]: 有楽町ウノ
+          - generic [ref=e87]: 5/28(木) 有楽町ウノ
+          - generic [ref=e88]:
+            - generic [ref=e89]: 総差枚 +36,730
+            - generic [ref=e90]: 平均 +176
+        - generic [ref=e91] [cursor=pointer]:
+          - generic [ref=e92]: ガイアネクスト三軒茶屋I
+          - generic [ref=e93]: 5/28(木) ガイアネクスト三軒茶屋I
+          - generic [ref=e94]:
+            - generic [ref=e95]: 総差枚 +48,000
+            - generic [ref=e96]: 平均 +194
+        - generic [ref=e97] [cursor=pointer]:
+          - generic [ref=e98]: ニューグランド保木間店
+          - generic [ref=e99]: 5/28(木) ニューグランド保木間店
+          - generic [ref=e100]:
+            - generic [ref=e101]: 総差枚 +3,750
+            - generic [ref=e102]: 平均 +25
+        - generic [ref=e103] [cursor=pointer]:
+          - generic [ref=e104]: ガイアネクスト三軒茶屋II
+          - generic [ref=e105]: 5/28(木) ガイアネクスト三軒茶屋II
+          - generic [ref=e106]:
+            - generic [ref=e107]: 総差枚 +5,240
+            - generic [ref=e108]: 平均 +29
+        - generic [ref=e109] [cursor=pointer]:
+          - generic [ref=e110]: マルハン日野店
+          - generic [ref=e111]: 5/28(木) マルハン日野店
+          - generic [ref=e112]:
+            - generic [ref=e113]: 総差枚 +31,100
+            - generic [ref=e114]: 平均 +69
+        - generic [ref=e115] [cursor=pointer]:
+          - generic [ref=e116]: MGM国領店
+          - generic [ref=e117]: 5/28(木) MGM国領店
+          - generic [ref=e118]:
+            - generic [ref=e119]: 総差枚 +29,160
+            - generic [ref=e120]: 平均 +124
+        - generic [ref=e121] [cursor=pointer]:
+          - generic [ref=e122]: マルハン大山店
+          - generic [ref=e123]: 5/28(木) マルハン大山店
+          - generic [ref=e124]:
+            - generic [ref=e125]: 総差枚 +13,100
+            - generic [ref=e126]: 平均 +57
+        - generic [ref=e127] [cursor=pointer]:
+          - generic [ref=e128]: マルホン
+          - generic [ref=e129]: 5/28(木) マルホン
+          - generic [ref=e130]:
+            - generic [ref=e131]: 総差枚 +105,178
+            - generic [ref=e132]: 平均 +584
+        - generic [ref=e133] [cursor=pointer]:
+          - generic [ref=e134]: BIGディッパー東中野店
+          - generic [ref=e135]: 5/28(木) BIGディッパー東中野店
+          - generic [ref=e136]:
+            - generic [ref=e137]: 総差枚 -
+            - generic [ref=e138]: 平均 -
+        - generic [ref=e139] [cursor=pointer]:
+          - generic [ref=e140]: マルハン青梅新町店
+          - generic [ref=e141]: 5/28(木) マルハン青梅新町店
+          - generic [ref=e142]:
+            - generic [ref=e143]: 総差枚 +36,600
+            - generic [ref=e144]: 平均 +63
+        - generic [ref=e145] [cursor=pointer]:
+          - generic [ref=e146]: マルハンメガシティ2000蒲田7
+          - generic [ref=e147]: 5/28(木) マルハンメガシティ2000蒲田7
+          - generic [ref=e148]:
+            - generic [ref=e149]: 総差枚 +10,700
+            - generic [ref=e150]: 平均 +15
+        - generic [ref=e151] [cursor=pointer]:
+          - generic [ref=e152]: パーラーコスミック八王子2号店
+          - generic [ref=e153]: 5/28(木) パーラーコスミック八王子2号店
+          - generic [ref=e154]:
+            - generic [ref=e155]: 総差枚 +4,302
+            - generic [ref=e156]: 平均 +43
+        - generic [ref=e157] [cursor=pointer]:
+          - generic [ref=e158]: マルハン新宿東宝ビル店
+          - generic [ref=e159]: 5/28(木) マルハン新宿東宝ビル店
+          - generic [ref=e160]:
+            - generic [ref=e161]: 総差枚 +34,800
+            - generic [ref=e162]: 平均 +52
+        - generic [ref=e163] [cursor=pointer]:
+          - generic [ref=e164]: YASUDA5
+          - generic [ref=e165]: 5/28(木) YASUDA5
+          - generic [ref=e166]:
+            - generic [ref=e167]: 総差枚 -
+            - generic [ref=e168]: 平均 -
+        - generic [ref=e169] [cursor=pointer]:
+          - generic [ref=e170]: やすだひばりヶ丘店
+          - generic [ref=e171]: 5/28(木) やすだひばりヶ丘店
+          - generic [ref=e172]:
+            - generic [ref=e173]: 総差枚 +67,990
+            - generic [ref=e174]: 平均 +231
+        - generic [ref=e175] [cursor=pointer]:
+          - generic [ref=e176]: マルハン亀有店
+          - generic [ref=e177]: 5/28(木) マルハン亀有店
+          - generic [ref=e178]:
+            - generic [ref=e179]: 総差枚 +27,600
+            - generic [ref=e180]: 平均 +51
+        - generic [ref=e181] [cursor=pointer]:
+          - generic [ref=e182]: マルハン池袋SLOT BASE
+          - generic [ref=e183]: 5/28(木) マルハン池袋SLOT BASE
+          - generic [ref=e184]:
+            - generic [ref=e185]: 総差枚 +40,700
+            - generic [ref=e186]: 平均 +135
+        - generic [ref=e187] [cursor=pointer]:
+          - generic [ref=e188]: ARROW池上店
+          - generic [ref=e189]: 5/28(木) ARROW池上店
+          - generic [ref=e190]:
+            - generic [ref=e191]: 総差枚 -
+            - generic [ref=e192]: 平均 -
+        - generic [ref=e193] [cursor=pointer]:
+          - generic [ref=e194]: エクサファースト
+          - generic [ref=e195]: 5/28(木) エクサファースト
+          - generic [ref=e196]:
+            - generic [ref=e197]: 総差枚 +14,170
+            - generic [ref=e198]: 平均 +35
+        - generic [ref=e199] [cursor=pointer]:
+          - generic [ref=e200]: カレイド新宿店
+          - generic [ref=e201]: 5/28(木) カレイド新宿店
+          - generic [ref=e202]:
+            - generic [ref=e203]: 総差枚 +8,950
+            - generic [ref=e204]: 平均 +37
+        - generic [ref=e205] [cursor=pointer]:
+          - generic [ref=e206]: 新橋UNO
+          - generic [ref=e207]: 5/28(木) 新橋UNO
+          - generic [ref=e208]:
+            - generic [ref=e209]: 総差枚 +23,620
+            - generic [ref=e210]: 平均 +79
+        - generic [ref=e211] [cursor=pointer]:
+          - generic [ref=e212]: 有楽町DUO
+          - generic [ref=e213]: 5/28(木) 有楽町DUO
+          - generic [ref=e214]:
+            - generic [ref=e215]: 総差枚 +11,020
+            - generic [ref=e216]: 平均 +38
+        - generic [ref=e217] [cursor=pointer]:
+          - generic [ref=e218]: 楽園池袋店グリーンサイド
+          - generic [ref=e219]: 5/28(木) 楽園池袋店グリーンサイド
+          - generic [ref=e220]:
+            - generic [ref=e221]: 総差枚 +102,430
+            - generic [ref=e222]: 平均 +276
+        - generic [ref=e223] [cursor=pointer]:
+          - generic [ref=e224]: トワーズ西八店
+          - generic [ref=e225]: 5/28(木) トワーズ西八店
+          - generic [ref=e226]:
+            - generic [ref=e227]: 総差枚 +13,060
+            - generic [ref=e228]: 平均 +103
+        - generic [ref=e229] [cursor=pointer]:
+          - generic [ref=e230]: グランドシップ
+          - generic [ref=e231]: 5/28(木) グランドシップ
+          - generic [ref=e232]:
+            - generic [ref=e233]: 総差枚 +22,396
+            - generic [ref=e234]: 平均 +73
+        - generic [ref=e235] [cursor=pointer]:
+          - generic [ref=e236]: キコーナ平井店
+          - generic [ref=e237]: 5/28(木) キコーナ平井店
+          - generic [ref=e238]:
+            - generic [ref=e239]: 総差枚 +12,596
+            - generic [ref=e240]: 平均 +40
+        - generic [ref=e241] [cursor=pointer]:
+          - generic [ref=e242]: ミリオン高円寺22号店
+          - generic [ref=e243]: 5/28(木) ミリオン高円寺22号店
+          - generic [ref=e244]:
+            - generic [ref=e245]: 総差枚 +16,673
+            - generic [ref=e246]: 平均 +124
+        - generic [ref=e247] [cursor=pointer]:
+          - generic [ref=e248]: メッセ南千住店
+          - generic [ref=e249]: 5/28(木) メッセ南千住店
+          - generic [ref=e250]:
+            - generic [ref=e251]: 総差枚 +16,013
+            - generic [ref=e252]: 平均 +62
+  - generic [ref=e254]:
+    - button "閉じる" [ref=e255] [cursor=pointer]
+    - heading "マルハン池袋店" [level=3] [ref=e256]
+    - generic [ref=e257]: https://min-repo.com/3132289/
+    - generic [ref=e258]:
+      - generic [ref=e259]:
+        - generic [ref=e260]: 総差枚
+        - generic [ref=e261]: +184,100
+      - generic [ref=e262]:
+        - generic [ref=e263]: 平均差枚
+        - generic [ref=e264]: +1,521.5
+      - generic [ref=e265]:
+        - generic [ref=e266]: 平均G数
+        - generic [ref=e267]: 4,010.8
+      - generic [ref=e268]:
+        - generic [ref=e269]: 勝率
+        - generic [ref=e270]: 94.2%
+      - generic [ref=e271]:
+        - generic [ref=e272]: 総台数
+        - generic [ref=e273]: "255"
+      - generic [ref=e274]:
+        - generic [ref=e275]: プラス台
+        - generic [ref=e276]: "114"
+    - generic [ref=e277]: 機種別データ（差枚順）
+    - table [ref=e279]:
+      - rowgroup [ref=e280]:
+        - row "機種 台数 総差枚 平均差枚 平均G数 勝率" [ref=e281]:
+          - columnheader "機種" [ref=e282]
+          - columnheader "台数" [ref=e283]
+          - columnheader "総差枚" [ref=e284]
+          - columnheader "平均差枚" [ref=e285]
+          - columnheader "平均G数" [ref=e286]
+          - columnheader "勝率" [ref=e287]
+      - rowgroup [ref=e288]:
+        - row "ニューキングハナハナV‐30 9 +18,600 +2,657.1 7,044.8 100%" [ref=e289]:
+          - cell "ニューキングハナハナV‐30" [ref=e290]
+          - cell "9" [ref=e291]
+          - cell "+18,600" [ref=e292]
+          - cell "+2,657.1" [ref=e293]
+          - cell "7,044.8" [ref=e294]
+          - cell "100%" [ref=e295]
+        - row "ゴーゴージャグラー３ 20 +12,000 +1,333.3 4,388.1 100%" [ref=e296]:
+          - cell "ゴーゴージャグラー３" [ref=e297]
+          - cell "20" [ref=e298]
+          - cell "+12,000" [ref=e299]
+          - cell "+1,333.3" [ref=e300]
+          - cell "4,388.1" [ref=e301]
+          - cell "100%" [ref=e302]
+        - row "キングハナハナ-30 22 +11,300 +869.2 5,981.5 100%" [ref=e303]:
+          - cell "キングハナハナ-30" [ref=e304]
+          - cell "22" [ref=e305]
+          - cell "+11,300" [ref=e306]
+          - cell "+869.2" [ref=e307]
+          - cell "5,981.5" [ref=e308]
+          - cell "100%" [ref=e309]
+        - row "スマスロ ミリオンゴッド-神々の軌跡- 3 +11,200 +11,200 5,269 100%" [ref=e310]:
+          - cell "スマスロ ミリオンゴッド-神々の軌跡-" [ref=e311]
+          - cell "3" [ref=e312]
+          - cell "+11,200" [ref=e313]
+          - cell "+11,200" [ref=e314]
+          - cell "5,269" [ref=e315]
+          - cell "100%" [ref=e316]
+        - row "マイジャグラーV 21 +10,900 +1,211.1 5,644.9 100%" [ref=e317]:
+          - cell "マイジャグラーV" [ref=e318]
+          - cell "21" [ref=e319]
+          - cell "+10,900" [ref=e320]
+          - cell "+1,211.1" [ref=e321]
+          - cell "5,644.9" [ref=e322]
+          - cell "100%" [ref=e323]
+        - row "沖ドキ!ゴージャス 30Φ 18 +10,600 +1,325 3,406.1 100%" [ref=e324]:
+          - cell "沖ドキ!ゴージャス 30Φ" [ref=e325]
+          - cell "18" [ref=e326]
+          - cell "+10,600" [ref=e327]
+          - cell "+1,325" [ref=e328]
+          - cell "3,406.1" [ref=e329]
+          - cell "100%" [ref=e330]
+        - row "スマスロ 沖ドキ!DUO アンコール 17 +10,300 +1,716.7 3,504.4 100%" [ref=e331]:
+          - cell "スマスロ 沖ドキ!DUO アンコール" [ref=e332]
+          - cell "17" [ref=e333]
+          - cell "+10,300" [ref=e334]
+          - cell "+1,716.7" [ref=e335]
+          - cell "3,504.4" [ref=e336]
+          - cell "100%" [ref=e337]
+        - row "ネオアイムジャグラーEX 16 +8,500 +1,214.3 4,143.8 100%" [ref=e338]:
+          - cell "ネオアイムジャグラーEX" [ref=e339]
+          - cell "16" [ref=e340]
+          - cell "+8,500" [ref=e341]
+          - cell "+1,214.3" [ref=e342]
+          - cell "4,143.8" [ref=e343]
+          - cell "100%" [ref=e344]
+        - row "チバリヨ2 4 +8,100 +4,050 1,662.5 50%" [ref=e345]:
+          - cell "チバリヨ2" [ref=e346]
+          - cell "4" [ref=e347]
+          - cell "+8,100" [ref=e348]
+          - cell "+4,050" [ref=e349]
+          - cell "1,662.5" [ref=e350]
+          - cell "50%" [ref=e351]
+        - row "L ToLOVEるダークネス TRANCE ver.8.7 2 +7,500 +3,750 4,850 100%" [ref=e352]:
+          - cell "L ToLOVEるダークネス TRANCE ver.8.7" [ref=e353]
+          - cell "2" [ref=e354]
+          - cell "+7,500" [ref=e355]
+          - cell "+3,750" [ref=e356]
+          - cell "4,850" [ref=e357]
+          - cell "100%" [ref=e358]
+        - row "スマスロ モンスターハンターライズ 2 +7,400 +7,400 4,802 100%" [ref=e359]:
+          - cell "スマスロ モンスターハンターライズ" [ref=e360]
+          - cell "2" [ref=e361]
+          - cell "+7,400" [ref=e362]
+          - cell "+7,400" [ref=e363]
+          - cell "4,802" [ref=e364]
+          - cell "100%" [ref=e365]
+        - row "スマスロ バイオハザードRE:3 3 +6,900 +3,450 3,501.3 100%" [ref=e366]:
+          - cell "スマスロ バイオハザードRE:3" [ref=e367]
+          - cell "3" [ref=e368]
+          - cell "+6,900" [ref=e369]
+          - cell "+3,450" [ref=e370]
+          - cell "3,501.3" [ref=e371]
+          - cell "100%" [ref=e372]
+        - row "L東京喰種 5 +6,400 +6,400 3,404.6 100%" [ref=e373]:
+          - cell "L東京喰種" [ref=e374]
+          - cell "5" [ref=e375]
+          - cell "+6,400" [ref=e376]
+          - cell "+6,400" [ref=e377]
+          - cell "3,404.6" [ref=e378]
+          - cell "100%" [ref=e379]
+        - row "ジャグラーガールズSS 4 +6,400 +3,200 4,922.5 100%" [ref=e380]:
+          - cell "ジャグラーガールズSS" [ref=e381]
+          - cell "4" [ref=e382]
+          - cell "+6,400" [ref=e383]
+          - cell "+3,200" [ref=e384]
+          - cell "4,922.5" [ref=e385]
+          - cell "100%" [ref=e386]
+        - row "ファンキージャグラー２ＫＴ 16 +6,200 +885.7 3,927.8 100%" [ref=e387]:
+          - cell "ファンキージャグラー２ＫＴ" [ref=e388]
+          - cell "16" [ref=e389]
+          - cell "+6,200" [ref=e390]
+          - cell "+885.7" [ref=e391]
+          - cell "3,927.8" [ref=e392]
+          - cell "100%" [ref=e393]
+        - row "Lパチスロうみねこのなく頃に2 4 +5,900 +1,475 2,630.2 100%" [ref=e394]:
+          - cell "Lパチスロうみねこのなく頃に2" [ref=e395]
+          - cell "4" [ref=e396]
+          - cell "+5,900" [ref=e397]
+          - cell "+1,475" [ref=e398]
+          - cell "2,630.2" [ref=e399]
+          - cell "100%" [ref=e400]
+        - row "スマスロ 甲鉄城のカバネリ 海門決戦 5 +5,500 +1,375 2,814.2 100%" [ref=e401]:
+          - cell "スマスロ 甲鉄城のカバネリ 海門決戦" [ref=e402]
+          - cell "5" [ref=e403]
+          - cell "+5,500" [ref=e404]
+          - cell "+1,375" [ref=e405]
+          - cell "2,814.2" [ref=e406]
+          - cell "100%" [ref=e407]
+        - row "Lパチスロ炎炎ノ消防隊2 3 +4,900 +1,633.3 4,217.3 100%" [ref=e408]:
+          - cell "Lパチスロ炎炎ノ消防隊2" [ref=e409]
+          - cell "3" [ref=e410]
+          - cell "+4,900" [ref=e411]
+          - cell "+1,633.3" [ref=e412]
+          - cell "4,217.3" [ref=e413]
+          - cell "100%" [ref=e414]
+        - row "スマスロ北斗の拳 転生の章2 10 +4,000 +800 3,089 80%" [ref=e415]:
+          - cell "スマスロ北斗の拳 転生の章2" [ref=e416]
+          - cell "10" [ref=e417]
+          - cell "+4,000" [ref=e418]
+          - cell "+800" [ref=e419]
+          - cell "3,089" [ref=e420]
+          - cell "80%" [ref=e421]
+        - row "ドラゴンハナハナ～閃光～‐30 5 +2,900 +1,450 3,703.8 100%" [ref=e422]:
+          - cell "ドラゴンハナハナ～閃光～‐30" [ref=e423]
+          - cell "5" [ref=e424]
+          - cell "+2,900" [ref=e425]
+          - cell "+1,450" [ref=e426]
+          - cell "3,703.8" [ref=e427]
+          - cell "100%" [ref=e428]
+        - row "パチスロ 甲鉄城のカバネリ 3 +2,700 +2,700 2,817 100%" [ref=e429]:
+          - cell "パチスロ 甲鉄城のカバネリ" [ref=e430]
+          - cell "3" [ref=e431]
+          - cell "+2,700" [ref=e432]
+          - cell "+2,700" [ref=e433]
+          - cell "2,817" [ref=e434]
+          - cell "100%" [ref=e435]
+        - row "沖ドキ！BLACK 5 +2,700 +2,700 3,225.8 100%" [ref=e436]:
+          - cell "沖ドキ！BLACK" [ref=e437]
+          - cell "5" [ref=e438]
+          - cell "+2,700" [ref=e439]
+          - cell "+2,700" [ref=e440]
+          - cell "3,225.8" [ref=e441]
+          - cell "100%" [ref=e442]
+        - row "ミスタージャグラー 4 +1,800 +900 4,747.8 100%" [ref=e443]:
+          - cell "ミスタージャグラー" [ref=e444]
+          - cell "4" [ref=e445]
+          - cell "+1,800" [ref=e446]
+          - cell "+900" [ref=e447]
+          - cell "4,747.8" [ref=e448]
+          - cell "100%" [ref=e449]
+        - row "クレアの秘宝伝～はじまりの扉と太陽の石～ボーナストリガーver. 1 +1,500 +1,500 7,409 100%" [ref=e450]:
+          - cell "クレアの秘宝伝～はじまりの扉と太陽の石～ボーナストリガーver." [ref=e451]
+          - cell "1" [ref=e452]
+          - cell "+1,500" [ref=e453]
+          - cell "+1,500" [ref=e454]
+          - cell "7,409" [ref=e455]
+          - cell "100%" [ref=e456]
+        - row "アニマルスロット ドッチ 1 +1,500 +1,500 1,684 100%" [ref=e457]:
+          - cell "アニマルスロット ドッチ" [ref=e458]
+          - cell "1" [ref=e459]
+          - cell "+1,500" [ref=e460]
+          - cell "+1,500" [ref=e461]
+          - cell "1,684" [ref=e462]
+          - cell "100%" [ref=e463]
+        - row "真打 吉宗 3 +1,500 +750 2,079.3 100%" [ref=e464]:
+          - cell "真打 吉宗" [ref=e465]
+          - cell "3" [ref=e466]
+          - cell "+1,500" [ref=e467]
+          - cell "+750" [ref=e468]
+          - cell "2,079.3" [ref=e469]
+          - cell "100%" [ref=e470]
+        - row "ウルトラミラクルジャグラー 4 +1,500 +500 5,924.5 100%" [ref=e471]:
+          - cell "ウルトラミラクルジャグラー" [ref=e472]
+          - cell "4" [ref=e473]
+          - cell "+1,500" [ref=e474]
+          - cell "+500" [ref=e475]
+          - cell "5,924.5" [ref=e476]
+          - cell "100%" [ref=e477]
+        - row "スマスロ ハナビ 3 +1,300 +650 1,911.7 100%" [ref=e478]:
+          - cell "スマスロ ハナビ" [ref=e479]
+          - cell "3" [ref=e480]
+          - cell "+1,300" [ref=e481]
+          - cell "+650" [ref=e482]
+          - cell "1,911.7" [ref=e483]
+          - cell "100%" [ref=e484]
+        - row "A-SLOT+ ディスクアップ ULTRAREMIX 3 +900 +900 6,594 100%" [ref=e485]:
+          - cell "A-SLOT+ ディスクアップ ULTRAREMIX" [ref=e486]
+          - cell "3" [ref=e487]
+          - cell "+900" [ref=e488]
+          - cell "+900" [ref=e489]
+          - cell "6,594" [ref=e490]
+          - cell "100%" [ref=e491]
+        - row "スマスロ サンダーV 2 +800 +800 4,006 100%" [ref=e492]:
+          - cell "スマスロ サンダーV" [ref=e493]
+          - cell "2" [ref=e494]
+          - cell "+800" [ref=e495]
+          - cell "+800" [ref=e496]
+          - cell "4,006" [ref=e497]
+          - cell "100%" [ref=e498]
+        - row "交響詩篇エウレカセブン HI-EVOLUTION ZERO TYPE-ART 2 +600 +600 3,951 100%" [ref=e499]:
+          - cell "交響詩篇エウレカセブン HI-EVOLUTION ZERO TYPE-ART" [ref=e500]
+          - cell "2" [ref=e501]
+          - cell "+600" [ref=e502]
+          - cell "+600" [ref=e503]
+          - cell "3,951" [ref=e504]
+          - cell "100%" [ref=e505]
+        - row "Lパチスロ革命機ヴァルヴレイヴ2 3 +500 +250 1,466.7 50%" [ref=e506]:
+          - cell "Lパチスロ革命機ヴァルヴレイヴ2" [ref=e507]
+          - cell "3" [ref=e508]
+          - cell "+500" [ref=e509]
+          - cell "+250" [ref=e510]
+          - cell "1,466.7" [ref=e511]
+          - cell "50%" [ref=e512]
+        - row "A-SLOT+異世界かるてっとBT 2 +400 +400 2,266.5 100%" [ref=e513]:
+          - cell "A-SLOT+異世界かるてっとBT" [ref=e514]
+          - cell "2" [ref=e515]
+          - cell "+400" [ref=e516]
+          - cell "+400" [ref=e517]
+          - cell "2,266.5" [ref=e518]
+          - cell "100%" [ref=e519]
+        - row "Lスマスロ北斗の拳 2 +400 +400 2,484 100%" [ref=e520]:
+          - cell "Lスマスロ北斗の拳" [ref=e521]
+          - cell "2" [ref=e522]
+          - cell "+400" [ref=e523]
+          - cell "+400" [ref=e524]
+          - cell "2,484" [ref=e525]
+          - cell "100%" [ref=e526]
+        - row "バーサスリヴァイズ 2 +300 +300 5,265.5 100%" [ref=e527]:
+          - cell "バーサスリヴァイズ" [ref=e528]
+          - cell "2" [ref=e529]
+          - cell "+300" [ref=e530]
+          - cell "+300" [ref=e531]
+          - cell "5,265.5" [ref=e532]
+          - cell "100%" [ref=e533]
+        - row "スマスロ化物語 3 +200 +100 1,087 50%" [ref=e534]:
+          - cell "スマスロ化物語" [ref=e535]
+          - cell "3" [ref=e536]
+          - cell "+200" [ref=e537]
+          - cell "+100" [ref=e538]
+          - cell "1,087" [ref=e539]
+          - cell "50%" [ref=e540]
+        - row "Lパチスロ 機動戦士ガンダムユニコーン 覚醒DRIVE 2 0 0 217 0%" [ref=e541]:
+          - cell "Lパチスロ 機動戦士ガンダムユニコーン 覚醒DRIVE" [ref=e542]
+          - cell "2" [ref=e543]
+          - cell "0" [ref=e544]
+          - cell "0" [ref=e545]
+          - cell "217" [ref=e546]
+          - cell "0%" [ref=e547]
+        - row "スマスロ 東京リベンジャーズ 2 0 0 470 0%" [ref=e548]:
+          - cell "スマスロ 東京リベンジャーズ" [ref=e549]
+          - cell "2" [ref=e550]
+          - cell "0" [ref=e551]
+          - cell "0" [ref=e552]
+          - cell "470" [ref=e553]
+          - cell "0%" [ref=e554]
+        - row "新ハナビ 1 0 0 667 0%" [ref=e555]:
+          - cell "新ハナビ" [ref=e556]
+          - cell "1" [ref=e557]
+          - cell "0" [ref=e558]
+          - cell "0" [ref=e559]
+          - cell "667" [ref=e560]
+          - cell "0%" [ref=e561]
+        - row "アレックス ブライト 2 0 0 1,539 0%" [ref=e562]:
+          - cell "アレックス ブライト" [ref=e563]
+          - cell "2" [ref=e564]
+          - cell "0" [ref=e565]
+          - cell "0" [ref=e566]
+          - cell "1,539" [ref=e567]
+          - cell "0%" [ref=e568]
+        - row "スマート沖スロ スターハナハナ 1 0 0 2,734 0%" [ref=e569]:
+          - cell "スマート沖スロ スターハナハナ" [ref=e570]
+          - cell "1" [ref=e571]
+          - cell "0" [ref=e572]
+          - cell "0" [ref=e573]
+          - cell "2,734" [ref=e574]
+          - cell "0%" [ref=e575]
+        - row "スマスロモンキーターンV 3 0 0 2,082.7 0%" [ref=e576]:
+          - cell "スマスロモンキーターンV" [ref=e577]
+          - cell "3" [ref=e578]
+          - cell "0" [ref=e579]
+          - cell "0" [ref=e580]
+          - cell "2,082.7" [ref=e581]
+          - cell "0%" [ref=e582]
+        - row "スマスロ マギアレコード 魔法少女まどか☆マギカ外伝 3 0 0 1,033.3 0%" [ref=e583]:
+          - cell "スマスロ マギアレコード 魔法少女まどか☆マギカ外伝" [ref=e584]
+          - cell "3" [ref=e585]
+          - cell "0" [ref=e586]
+          - cell "0" [ref=e587]
+          - cell "1,033.3" [ref=e588]
+          - cell "0%" [ref=e589]
+        - row "この素晴らしい世界に祝福を！ 1 0 0 1,913 0%" [ref=e590]:
+          - cell "この素晴らしい世界に祝福を！" [ref=e591]
+          - cell "1" [ref=e592]
+          - cell "0" [ref=e593]
+          - cell "0" [ref=e594]
+          - cell "1,913" [ref=e595]
+          - cell "0%" [ref=e596]
+        - row "Lパチスロ かぐや様は告らせたい 2 0 0 3,326 0%" [ref=e597]:
+          - cell "Lパチスロ かぐや様は告らせたい" [ref=e598]
+          - cell "2" [ref=e599]
+          - cell "0" [ref=e600]
+          - cell "0" [ref=e601]
+          - cell "3,326" [ref=e602]
+          - cell "0%" [ref=e603]
+        - row "SHAKE BONUS TRIGGER 3 0 0 3,680.7 0%" [ref=e604]:
+          - cell "SHAKE BONUS TRIGGER" [ref=e605]
+          - cell "3" [ref=e606]
+          - cell "0" [ref=e607]
+          - cell "0" [ref=e608]
+          - cell "3,680.7" [ref=e609]
+          - cell "0%" [ref=e610]
+        - row "押忍！番長ＺＥＲＯ 1 0 0 1,615 0%" [ref=e611]:
+          - cell "押忍！番長ＺＥＲＯ" [ref=e612]
+          - cell "1" [ref=e613]
+          - cell "0" [ref=e614]
+          - cell "0" [ref=e615]
+          - cell "1,615" [ref=e616]
+          - cell "0%" [ref=e617]
+        - row "クランキークレスト 2 0 0 2,819 0%" [ref=e618]:
+          - cell "クランキークレスト" [ref=e619]
+          - cell "2" [ref=e620]
+          - cell "0" [ref=e621]
+          - cell "0" [ref=e622]
+          - cell "2,819" [ref=e623]
+          - cell "0%" [ref=e624]
+    - generic [ref=e625]: 差枚ランキング TOP30
+    - table [ref=e627]:
+      - rowgroup [ref=e628]:
+        - row "# 台番 機種 差枚 G数" [ref=e629]:
+          - columnheader "#" [ref=e630]
+          - columnheader "台番" [ref=e631]
+          - columnheader "機種" [ref=e632]
+          - columnheader "差枚" [ref=e633]
+          - columnheader "G数" [ref=e634]
+      - rowgroup [ref=e635]:
+        - row "1 237 スマスロ ミリオンゴッド-神々の軌跡- +11,200 6,812" [ref=e636]:
+          - cell "1" [ref=e637]
+          - cell "237" [ref=e638]
+          - cell "スマスロ ミリオンゴッド-神々の軌跡-" [ref=e639]
+          - cell "+11,200" [ref=e640]
+          - cell "6,812" [ref=e641]
+        - row "2 74 チバリヨ2 +8,100 3,184" [ref=e642]:
+          - cell "2" [ref=e643]
+          - cell "74" [ref=e644]
+          - cell "チバリヨ2" [ref=e645]
+          - cell "+8,100" [ref=e646]
+          - cell "3,184" [ref=e647]
+        - row "3 249 スマスロ モンスターハンターライズ +7,400 6,802" [ref=e648]:
+          - cell "3" [ref=e649]
+          - cell "249" [ref=e650]
+          - cell "スマスロ モンスターハンターライズ" [ref=e651]
+          - cell "+7,400" [ref=e652]
+          - cell "6,802" [ref=e653]
+        - row "4 173 L東京喰種 +6,400 7,403" [ref=e654]:
+          - cell "4" [ref=e655]
+          - cell "173" [ref=e656]
+          - cell "L東京喰種" [ref=e657]
+          - cell "+6,400" [ref=e658]
+          - cell "7,403" [ref=e659]
+        - row "5 52 ニューキングハナハナV‐30 +5,900 6,835" [ref=e660]:
+          - cell "5" [ref=e661]
+          - cell "52" [ref=e662]
+          - cell "ニューキングハナハナV‐30" [ref=e663]
+          - cell "+5,900" [ref=e664]
+          - cell "6,835" [ref=e665]
+        - row "6 209 スマスロ バイオハザードRE:3 +5,800 5,241" [ref=e666]:
+          - cell "6" [ref=e667]
+          - cell "209" [ref=e668]
+          - cell "スマスロ バイオハザードRE:3" [ref=e669]
+          - cell "+5,800" [ref=e670]
+          - cell "5,241" [ref=e671]
+        - row "7 23 スマスロ 沖ドキ!DUO アンコール +5,300 6,648" [ref=e672]:
+          - cell "7" [ref=e673]
+          - cell "23" [ref=e674]
+          - cell "スマスロ 沖ドキ!DUO アンコール" [ref=e675]
+          - cell "+5,300" [ref=e676]
+          - cell "6,648" [ref=e677]
+        - row "8 190 L ToLOVEるダークネス TRANCE ver.8.7 +5,200 2,977" [ref=e678]:
+          - cell "8" [ref=e679]
+          - cell "190" [ref=e680]
+          - cell "L ToLOVEるダークネス TRANCE ver.8.7" [ref=e681]
+          - cell "+5,200" [ref=e682]
+          - cell "2,977" [ref=e683]
+        - row "9 60 ニューキングハナハナV‐30 +5,000 8,272" [ref=e684]:
+          - cell "9" [ref=e685]
+          - cell "60" [ref=e686]
+          - cell "ニューキングハナハナV‐30" [ref=e687]
+          - cell "+5,000" [ref=e688]
+          - cell "8,272" [ref=e689]
+        - row "10 6 沖ドキ!ゴージャス 30Φ +3,700 2,118" [ref=e690]:
+          - cell "10" [ref=e691]
+          - cell "6" [ref=e692]
+          - cell "沖ドキ!ゴージャス 30Φ" [ref=e693]
+          - cell "+3,700" [ref=e694]
+          - cell "2,118" [ref=e695]
+        - row "11 68 ジャグラーガールズSS +3,700 8,001" [ref=e696]:
+          - cell "11" [ref=e697]
+          - cell "68" [ref=e698]
+          - cell "ジャグラーガールズSS" [ref=e699]
+          - cell "+3,700" [ref=e700]
+          - cell "8,001" [ref=e701]
+        - row "12 108 ネオアイムジャグラーEX +3,400 6,625" [ref=e702]:
+          - cell "12" [ref=e703]
+          - cell "108" [ref=e704]
+          - cell "ネオアイムジャグラーEX" [ref=e705]
+          - cell "+3,400" [ref=e706]
+          - cell "6,625" [ref=e707]
+        - row "13 144 ゴーゴージャグラー３ +3,200 7,963" [ref=e708]:
+          - cell "13" [ref=e709]
+          - cell "144" [ref=e710]
+          - cell "ゴーゴージャグラー３" [ref=e711]
+          - cell "+3,200" [ref=e712]
+          - cell "7,963" [ref=e713]
+        - row "14 177 スマスロ 甲鉄城のカバネリ 海門決戦 +3,000 4,418" [ref=e714]:
+          - cell "14" [ref=e715]
+          - cell "177" [ref=e716]
+          - cell "スマスロ 甲鉄城のカバネリ 海門決戦" [ref=e717]
+          - cell "+3,000" [ref=e718]
+          - cell "4,418" [ref=e719]
+        - row "15 101 マイジャグラーV +2,900 9,046" [ref=e720]:
+          - cell "15" [ref=e721]
+          - cell "101" [ref=e722]
+          - cell "マイジャグラーV" [ref=e723]
+          - cell "+2,900" [ref=e724]
+          - cell "9,046" [ref=e725]
+        - row "16 169 パチスロ 甲鉄城のカバネリ +2,700 5,121" [ref=e726]:
+          - cell "16" [ref=e727]
+          - cell "169" [ref=e728]
+          - cell "パチスロ 甲鉄城のカバネリ" [ref=e729]
+          - cell "+2,700" [ref=e730]
+          - cell "5,121" [ref=e731]
+        - row "17 78 沖ドキ！BLACK +2,700 4,255" [ref=e732]:
+          - cell "17" [ref=e733]
+          - cell "78" [ref=e734]
+          - cell "沖ドキ！BLACK" [ref=e735]
+          - cell "+2,700" [ref=e736]
+          - cell "4,255" [ref=e737]
+        - row "18 69 ジャグラーガールズSS +2,700 7,265" [ref=e738]:
+          - cell "18" [ref=e739]
+          - cell "69" [ref=e740]
+          - cell "ジャグラーガールズSS" [ref=e741]
+          - cell "+2,700" [ref=e742]
+          - cell "7,265" [ref=e743]
+        - row "19 53 ニューキングハナハナV‐30 +2,600 8,985" [ref=e744]:
+          - cell "19" [ref=e745]
+          - cell "53" [ref=e746]
+          - cell "ニューキングハナハナV‐30" [ref=e747]
+          - cell "+2,600" [ref=e748]
+          - cell "8,985" [ref=e749]
+        - row "20 30 スマスロ 沖ドキ!DUO アンコール +2,400 7,264" [ref=e750]:
+          - cell "20" [ref=e751]
+          - cell "30" [ref=e752]
+          - cell "スマスロ 沖ドキ!DUO アンコール" [ref=e753]
+          - cell "+2,400" [ref=e754]
+          - cell "7,264" [ref=e755]
+        - row "21 95 マイジャグラーV +2,400 8,505" [ref=e756]:
+          - cell "21" [ref=e757]
+          - cell "95" [ref=e758]
+          - cell "マイジャグラーV" [ref=e759]
+          - cell "+2,400" [ref=e760]
+          - cell "8,505" [ref=e761]
+        - row "22 63 マイジャグラーV +2,300 8,921" [ref=e762]:
+          - cell "22" [ref=e763]
+          - cell "63" [ref=e764]
+          - cell "マイジャグラーV" [ref=e765]
+          - cell "+2,300" [ref=e766]
+          - cell "8,921" [ref=e767]
+        - row "23 189 L ToLOVEるダークネス TRANCE ver.8.7 +2,300 6,723" [ref=e768]:
+          - cell "23" [ref=e769]
+          - cell "189" [ref=e770]
+          - cell "L ToLOVEるダークネス TRANCE ver.8.7" [ref=e771]
+          - cell "+2,300" [ref=e772]
+          - cell "6,723" [ref=e773]
+        - row "24 138 ゴーゴージャグラー３ +2,300 7,292" [ref=e774]:
+          - cell "24" [ref=e775]
+          - cell "138" [ref=e776]
+          - cell "ゴーゴージャグラー３" [ref=e777]
+          - cell "+2,300" [ref=e778]
+          - cell "7,292" [ref=e779]
+        - row "25 240 Lパチスロ炎炎ノ消防隊2 +2,300 2,805" [ref=e780]:
+          - cell "25" [ref=e781]
+          - cell "240" [ref=e782]
+          - cell "Lパチスロ炎炎ノ消防隊2" [ref=e783]
+          - cell "+2,300" [ref=e784]
+          - cell "2,805" [ref=e785]
+        - row "26 199 Lパチスロうみねこのなく頃に2 +2,300 2,323" [ref=e786]:
+          - cell "26" [ref=e787]
+          - cell "199" [ref=e788]
+          - cell "Lパチスロうみねこのなく頃に2" [ref=e789]
+          - cell "+2,300" [ref=e790]
+          - cell "2,323" [ref=e791]
+        - row "27 227 スマスロ北斗の拳 転生の章2 +2,300 3,693" [ref=e792]:
+          - cell "27" [ref=e793]
+          - cell "227" [ref=e794]
+          - cell "スマスロ北斗の拳 転生の章2" [ref=e795]
+          - cell "+2,300" [ref=e796]
+          - cell "3,693" [ref=e797]
+        - row "28 122 ファンキージャグラー２ＫＴ +2,200 6,189" [ref=e798]:
+          - cell "28" [ref=e799]
+          - cell "122" [ref=e800]
+          - cell "ファンキージャグラー２ＫＴ" [ref=e801]
+          - cell "+2,200" [ref=e802]
+          - cell "6,189" [ref=e803]
+        - row "29 58 ニューキングハナハナV‐30 +2,000 7,725" [ref=e804]:
+          - cell "29" [ref=e805]
+          - cell "58" [ref=e806]
+          - cell "ニューキングハナハナV‐30" [ref=e807]
+          - cell "+2,000" [ref=e808]
+          - cell "7,725" [ref=e809]
+        - row "30 224 キングハナハナ-30 +1,900 8,721" [ref=e810]:
+          - cell "30" [ref=e811]
+          - cell "224" [ref=e812]
+          - cell "キングハナハナ-30" [ref=e813]
+          - cell "+1,900" [ref=e814]
+          - cell "8,721" [ref=e815]

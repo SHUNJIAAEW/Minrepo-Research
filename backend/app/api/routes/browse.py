@@ -9,6 +9,7 @@ from fastapi import APIRouter, HTTPException, Query
 
 from app.scraper.minnrepo_browser import MinnrepoBrowser, PREFECTURES, ALL_PREFECTURES
 from app.scraper.minnrepo import MinnrepoScraper
+from app.scraper.sources import normalize_minnrepo_report_url, InvalidSourceUrl
 from app.analyzer.compute import analyze_units
 from app.schemas.browse import (
     PrefectureGroup, StoreListOut, StoreCardOut,
@@ -51,9 +52,10 @@ async def list_stores(
 @router.post("/research", response_model=ResearchResult)
 async def research_store(body: ResearchRequest):
     """選択した店舗レポートをその場でスクレイピング・分析して返す"""
-    report_url = body.report_url.rstrip("/") + "/"
-    if not report_url.startswith("https://min-repo.com/"):
-        raise HTTPException(400, "みんレポのレポートURLを指定してください")
+    try:
+        report_url = normalize_minnrepo_report_url(body.report_url)
+    except InvalidSourceUrl as e:
+        raise HTTPException(400, str(e))
 
     try:
         async with MinnrepoScraper() as scraper:

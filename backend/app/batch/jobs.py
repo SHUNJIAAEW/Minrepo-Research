@@ -2,7 +2,7 @@ import logging
 import time
 from datetime import date
 
-from sqlalchemy import select
+from sqlalchemy import select, delete
 
 from app.db.base import AsyncSessionLocal
 from app.models import Store, DataSource, UnitResult, CollectionLog, ErrorLog
@@ -27,6 +27,12 @@ async def collect_all_stores_job(record_date: date) -> None:
 
 async def collect_store(store_id: int, record_date: date, db) -> None:
     start = time.monotonic()
+    # 再収集時の二重計上を防ぐため、同一 store/date の既存台データを削除してから収集
+    await db.execute(delete(UnitResult).where(
+        UnitResult.store_id == store_id,
+        UnitResult.record_date == record_date,
+    ))
+
     sources = (await db.execute(
         select(DataSource).where(
             DataSource.store_id == store_id,

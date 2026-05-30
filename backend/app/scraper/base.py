@@ -8,6 +8,9 @@ from typing import Optional
 from playwright.async_api import async_playwright, Browser, BrowserContext
 
 from app.core.config import settings
+from app.scraper.throttle import (
+    assert_can_fetch, throttle, concurrency_slot, USER_AGENT, RobotsBlocked,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -46,9 +49,7 @@ class BaseScraper(ABC):
     async def __aenter__(self):
         self._playwright = await async_playwright().start()
         self._browser = await self._playwright.chromium.launch(headless=True)
-        self._context = await self._browser.new_context(
-            user_agent="Mozilla/5.0 (compatible; DataResearchBot/1.0)"
-        )
+        self._context = await self._browser.new_context(user_agent=USER_AGENT)
         return self
 
     async def __aexit__(self, *args):
@@ -59,16 +60,18 @@ class BaseScraper(ABC):
         await self._playwright.stop()
 
     async def fetch(self, url: str) -> str:
-        """robots.txt遵守・レート制限付きフェッチ"""
-        await asyncio.sleep(settings.SCRAPE_REQUEST_INTERVAL)
-        page = await self._context.new_page()
-        try:
-            # networkidle は広告の常時通信で発火しないため domcontentloaded を使用。
-            # テーブルはサーバーレンダリングされた初期HTMLに含まれる。
-            await page.goto(url, timeout=settings.SCRAPE_TIMEOUT * 1000, wait_until="domcontentloaded")
-            return await page.content()
-        finally:
-            await page.close()
+        """robots.txt遵守・ホスト単位レート制限・同時実行数制限付きフェッチ"""
+        await assert_can_fetch(url)            # robots.txt 判定
+        async with concurrency_slot():         # 同時実行数制限（プロセス全体）
+            await throttle(url)                # ホスト単位の最小間隔
+            page = await self._context.new_page()
+            try:
+                # networkidle は広告の常時通信で発火しないため domcontentloaded を使用。
+                # テーブルはサーバーレンダリングされた初期HTMLに含まれる。
+                await page.goto(url, timeout=settings.SCRAPE_TIMEOUT * 1000, wait_until="domcontentloaded")
+                return await page.content()
+            finally:
+                await page.close()
 
     @abstractmethod
     async def scrape(self, store_id: int, url: str, record_date: date) -> ScrapeResult:
@@ -82,6 +85,13 @@ class BaseScraper(ABC):
                 result = await self.scrape(store_id, url, record_date)
                 if result.success:
                     return result
+            except RobotsBlocked as e:
+                # robots.txt による禁止はリトライしても無駄なので即終了
+                logger.warning(f"Blocked by robots.txt store={store_id}: {e}")
+                return ScrapeResult(
+                    store_id=store_id, record_date=record_date,
+                    success=False, error_message=str(e),
+                )
             except Exception as e:
                 last_error = e
                 logger.warning(f"Attempt {attempt} failed for store={store_id}: {e}")

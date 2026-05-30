@@ -3,6 +3,7 @@
 店舗名でサイトを検索し、最新レポートURLを返す。
 """
 import logging
+import urllib.parse
 from bs4 import BeautifulSoup
 from .base import BaseScraper
 
@@ -19,7 +20,8 @@ class MinnrepoFinder(BaseScraper):
         ホール名で検索して最新レポートのURLを返す。
         DataSource.url はレポートIDではなく、この関数で毎回動的に取得する。
         """
-        search_url = f"{SEARCH_URL}?s={store_name}"
+        query = urllib.parse.urlencode({"s": store_name})
+        search_url = f"{SEARCH_URL}?{query}"
         html = await self.fetch(search_url)
         soup = BeautifulSoup(html, "html.parser")
 
