@@ -22,7 +22,9 @@ celery_app.conf.timezone = "Asia/Tokyo"
 
 
 def run_async(coro):
-    return asyncio.get_event_loop().run_until_complete(coro)
+    # Celeryワーカー(同期プロセス)からasyncジョブを実行。
+    # get_event_loop()はPython3.12+で非推奨/エラーになるため asyncio.run を使う。
+    return asyncio.run(coro)
 
 
 @celery_app.task(bind=True, max_retries=3)

@@ -26,7 +26,12 @@ class MinnrepoScraper(BaseScraper):
 
         units = self._parse_unit_table(soup)
         if not units:
+            # 0件はサイト構造変更・一時応答の可能性。失敗扱いにしてリトライ対象とする。
             logger.warning(f"No units parsed for store={store_id} url={all_url}")
+            return ScrapeResult(
+                store_id=store_id, record_date=record_date, units=[],
+                success=False, error_message="台データテーブルが空（構造変更の可能性）",
+            )
 
         return ScrapeResult(store_id=store_id, record_date=record_date, units=units)
 

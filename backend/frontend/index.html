@@ -96,7 +96,7 @@ async function loadPrefectures(){
   const sb = document.getElementById("sidebar");
   sb.innerHTML = groups.map(g => `
     <div class="region">
-      <div class="region-title">${g.region}</div>
+      <div class="region-title">${esc(g.region)}</div>
       ${g.prefectures.map(p=>`<button class="pref" data-pref="${esc(p)}">${esc(p)}</button>`).join("")}
     </div>`).join("");
   sb.querySelectorAll(".pref").forEach(btn=>{

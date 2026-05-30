@@ -130,9 +130,9 @@ async def tool_status(record_date: date) -> ToolResult:
                 select(func.count()).select_from(DailyReport).where(DailyReport.record_date == record_date)
             )).scalar_one()
             collected = (await db.execute(
-                select(func.count()).select_from(CollectionLog).where(
+                select(func.count(func.distinct(CollectionLog.store_id))).where(
                     CollectionLog.record_date == record_date,
-                    CollectionLog.status == "success",
+                    CollectionLog.status.in_(["success", "partial"]),
                 )
             )).scalar_one()
             unresolved = (await db.execute(

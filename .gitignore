@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 環境変数
+.env
+
+# 生成物
+backend/reports/
+*.pdf
+*.jpeg
+*.jpg
+*.png
+
+# ツール一時生成物
+.playwright-mcp/
+
+# OS
+.DS_Store

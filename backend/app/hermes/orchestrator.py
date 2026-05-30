@@ -43,81 +43,91 @@ async def run_daily_flow(record_date: date, trigger: str = "cron") -> dict:
         await db.refresh(run)
         run_id = run.id
 
-    # 1. ヘルスチェック
-    health = await tools.tool_health()
-    steps.append(StepResult("health", "success" if health.ok else "failed", health.detail or health.error or ""))
-    if not health.ok:
-        errors.append(f"health: {health.error}")
+    status = "failed"
+    try:
+        # 1. ヘルスチェック
+        health = await tools.tool_health()
+        steps.append(StepResult("health", "success" if health.ok else "failed", health.detail or health.error or ""))
+        if not health.ok:
+            errors.append(f"health: {health.error}")
 
-    # 2. 対象店舗取得
-    async with AsyncSessionLocal() as db:
-        stores = (await db.execute(select(Store).where(Store.is_active == True))).scalars().all()
-        store_list = [(s.id, s.name) for s in stores]
-    metrics["stores_total"] = len(store_list)
-    steps.append(StepResult("fetch_stores", "success", f"{len(store_list)}店舗"))
+        # 2. 対象店舗取得
+        async with AsyncSessionLocal() as db:
+            stores = (await db.execute(select(Store).where(Store.is_active == True))).scalars().all()
+            store_list = [(s.id, s.name) for s in stores]
+        metrics["stores_total"] = len(store_list)
+        steps.append(StepResult("fetch_stores", "success", f"{len(store_list)}店舗"))
 
-    # 3-10. 店舗ごとに 収集→分析→配信
-    for store_id, store_name in store_list:
-        store_ok = True
+        # 3-10. 店舗ごとに 収集→分析→配信
+        for store_id, store_name in store_list:
+            store_ok = True
 
-        c = await tools.tool_collect(store_id, record_date)
-        if c.ok:
-            metrics["collected_ok"] += 1
-        else:
-            store_ok = False
-            errors.append(f"[{store_name}] collect: {c.error or c.detail}")
-            # 収集失敗なら分析・配信はスキップ
-            steps.append(StepResult(f"store:{store_name}", "failed", f"collect失敗: {c.error or c.detail}"))
-            metrics["store_failures"] += 1
-            continue
+            c = await tools.tool_collect(store_id, record_date)
+            if c.ok:
+                metrics["collected_ok"] += 1
+            else:
+                errors.append(f"[{store_name}] collect: {c.error or c.detail}")
+                # 収集失敗なら分析・配信はスキップ
+                steps.append(StepResult(f"store:{store_name}", "failed", f"collect失敗: {c.error or c.detail}"))
+                metrics["store_failures"] += 1
+                continue
 
-        a = await tools.tool_analyze(store_id, record_date)
-        if a.ok:
-            metrics["analyzed_ok"] += 1
-        else:
-            store_ok = False
-            errors.append(f"[{store_name}] analyze: {a.error}")
-
-        if a.ok:
-            d = await tools.tool_deliver(store_id, record_date)
-            if d.ok:
-                metrics["delivered_ok"] += 1
+            a = await tools.tool_analyze(store_id, record_date)
+            if a.ok:
+                metrics["analyzed_ok"] += 1
             else:
                 store_ok = False
-                errors.append(f"[{store_name}] deliver: {d.error}")
+                errors.append(f"[{store_name}] analyze: {a.error}")
 
-        if not store_ok:
-            metrics["store_failures"] += 1
-        steps.append(StepResult(
-            f"store:{store_name}",
-            "success" if store_ok else "partial",
-            f"collect={c.ok} analyze={a.ok}",
-        ))
+            if a.ok:
+                d = await tools.tool_deliver(store_id, record_date)
+                if d.ok:
+                    metrics["delivered_ok"] += 1
+                else:
+                    store_ok = False
+                    errors.append(f"[{store_name}] deliver: {d.error}")
 
-    # 状態サマリー
-    st = await tools.tool_status(record_date)
-    steps.append(StepResult("status", "success" if st.ok else "failed", st.detail or ""))
+            if not store_ok:
+                metrics["store_failures"] += 1
+            steps.append(StepResult(
+                f"store:{store_name}",
+                "success" if store_ok else "partial",
+                f"collect={c.ok} analyze={a.ok}",
+            ))
 
-    # 実行結果の確定
-    duration = int(time.monotonic() - started)
-    if metrics["store_failures"] == 0 and not errors:
-        status = "success"
-    elif metrics["delivered_ok"] > 0 or metrics["collected_ok"] > 0:
-        status = "partial"
-    else:
+        # 状態サマリー
+        st = await tools.tool_status(record_date)
+        steps.append(StepResult("status", "success" if st.ok else "failed", st.detail or ""))
+
+        # 実行結果の判定
+        if metrics["store_failures"] == 0 and not errors:
+            status = "success"
+        elif metrics["delivered_ok"] > 0 or metrics["collected_ok"] > 0:
+            status = "partial"
+        else:
+            status = "failed"
+    except Exception as e:
+        # 予期しない例外でも running を残さない
+        logger.exception(f"Hermes daily flow crashed run={run_id}")
         status = "failed"
-
-    error_summary = "\n".join(errors[:50]) if errors else None
-
-    async with AsyncSessionLocal() as db:
-        run = await db.get(HermesRun, run_id)
-        run.status = status
-        run.finished_at = datetime.now(timezone.utc)
-        run.duration_seconds = duration
-        run.steps = [s.to_dict() for s in steps]
-        run.metrics = metrics
-        run.error_summary = error_summary
-        await db.commit()
+        errors.append(f"orchestrator: {type(e).__name__}: {e}")
+        steps.append(StepResult("orchestrator", "failed", str(e)))
+    finally:
+        duration = int(time.monotonic() - started)
+        error_summary = "\n".join(errors[:50]) if errors else None
+        try:
+            async with AsyncSessionLocal() as db:
+                run = await db.get(HermesRun, run_id)
+                if run is not None:
+                    run.status = status
+                    run.finished_at = datetime.now(timezone.utc)
+                    run.duration_seconds = duration
+                    run.steps = [s.to_dict() for s in steps]
+                    run.metrics = metrics
+                    run.error_summary = error_summary
+                    await db.commit()
+        except Exception:
+            logger.exception(f"Failed to finalize HermesRun run={run_id}")
 
     # 失敗時アラート
     if status != "success":
